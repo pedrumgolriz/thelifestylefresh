@@ -4,9 +4,9 @@ export const metadata: Metadata = { title: "Cookies" };
 
 export default function CookiesPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 pb-24 pt-16">
-      <p className="eyebrow">House rules</p>
-      <h1 className="serif mt-4 text-5xl tracking-[-0.045em]">Cookies.</h1>
+    <div className="mx-auto max-w-3xl px-5 pb-24 pt-20">
+      <p className="eyebrow-brass">House rules</p>
+      <h1 className="serif mt-5 text-5xl tracking-[-0.02em]">Cookies.</h1>
       <div className="prose-lf mt-8">
         <p>
           Essential cookies keep you signed in to the desk and to membership. They are a

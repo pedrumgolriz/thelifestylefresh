@@ -48,16 +48,16 @@ export default async function JournalPostPage({
   }
 
   return (
-    <article className="mx-auto max-w-3xl px-5 pb-24 pt-16">
-      <Link href="/journal" className="eyebrow">
-        Journal
+    <article className="mx-auto max-w-3xl px-5 pb-24 pt-20">
+      <Link href="/journal" className="eyebrow-brass">
+        The journal
       </Link>
-      <p className="mt-6 eyebrow">{shelfLabel(post.category)}</p>
-      <h1 className="serif mt-3 text-5xl tracking-[-0.045em]">{post.title}</h1>
+      <p className="mt-8 eyebrow">{shelfLabel(post.category)}</p>
+      <h1 className="serif mt-4 text-5xl tracking-[-0.02em]">{post.title}</h1>
       <p className="mt-5 text-lg leading-8 text-ink-soft">{post.excerpt}</p>
-      <div className={`mt-8 h-48 cover-${post.coverTone}`} aria-hidden="true" />
+      <div className={`mt-10 h-56 cover-${post.coverTone}`} aria-hidden="true" />
       <div
-        className="prose-lf mt-10"
+        className="prose-lf mt-12"
         dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }}
       />
     </article>

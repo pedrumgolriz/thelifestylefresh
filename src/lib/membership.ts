@@ -1,7 +1,8 @@
 import { prisma } from "./db";
+import { HOUSE_CAP } from "./house";
 
 const ACTIVE = ["active", "trialing"] as const;
-const DEFAULT_CAP = Number(process.env.MEMBER_CAP ?? 40);
+const DEFAULT_CAP = Number(process.env.MEMBER_CAP ?? HOUSE_CAP);
 
 export type MembershipSnapshot = {
   cap: number;

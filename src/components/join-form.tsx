@@ -108,7 +108,7 @@ export function JoinForm({ initialCode = "" }: { initialCode?: string }) {
       </div>
       <p className="text-sm leading-6 text-ink-soft">{SHIPPING_COPY}</p>
       <button className="btn btn-ink" disabled={status === "loading"}>
-        {status === "loading" ? "Opening the bill" : "Take the seat"}
+        {status === "loading" ? "Opening your card" : "Redeem your card →"}
       </button>
       {message ? (
         <p className="text-sm text-seal" role="alert">

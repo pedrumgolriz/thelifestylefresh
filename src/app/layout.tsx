@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Mrs_Saint_Delafield, Newsreader } from "next/font/google";
+import { Fraunces, Inter, Mrs_Saint_Delafield } from "next/font/google";
 import { CookieBanner } from "@/components/cookie-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -10,15 +10,15 @@ import "./globals.css";
 const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
 });
 
-const body = Newsreader({
+const body = Inter({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
+  style: ["normal"],
 });
 
 const script = Mrs_Saint_Delafield({
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"

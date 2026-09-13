@@ -27,9 +27,9 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto max-w-md px-5 pb-24 pt-20">
-      <p className="script text-4xl">Members</p>
-      <h1 className="serif mt-4 text-5xl tracking-[-0.04em]">Sign in.</h1>
-      <form onSubmit={onSubmit} className="invite-card mt-8 grid gap-4 p-6">
+      <p className="script text-4xl sm:text-5xl">Members</p>
+      <h1 className="serif mt-5 text-5xl tracking-[-0.02em]">Sign in.</h1>
+      <form onSubmit={onSubmit} className="invite-card mt-8 grid gap-4 p-7">
         <label className="grid gap-2 text-sm">
           <FieldLabel required>Email</FieldLabel>
           <input className="field" type="email" name="email" required autoComplete="email" />
@@ -46,7 +46,7 @@ export default function LoginPage() {
         </label>
         <button className="btn btn-ink">Enter</button>
         {error ? (
-          <p className="text-sm text-seal" role="alert">
+          <p className="text-sm text-lilac-deep" role="alert">
             {error}
           </p>
         ) : null}

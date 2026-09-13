@@ -10,14 +10,14 @@ export async function SiteHeader() {
   const seats = await getMembershipSnapshot();
 
   const links = [
-    { href: "/the-box", label: "The Correspondence" },
+    { href: "/envelope", label: "The Envelope" },
+    { href: "/house", label: "The House" },
     { href: "/journal", label: "The Journal" },
-    { href: "/about", label: "The House" },
-    { href: "/request", label: "Request an Invitation" },
+    { href: "/membership", label: "Membership" },
     ...(session?.role === "ADMIN"
       ? [{ href: "/admin", label: "The desk" }]
       : session
-        ? [{ href: "/account", label: "Membership" }]
+        ? [{ href: "/account", label: "Your name" }]
         : []),
   ];
 
@@ -26,10 +26,10 @@ export async function SiteHeader() {
       <div className="masthead glass-settle">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3">
           <Link href="/" className="flex items-center gap-3" aria-label="The Lifestyle Fresh, home">
-            <Mark className="mark-seal h-12 w-12" />
+            <Mark className="mark-seal h-11 w-11" />
             <span className="leading-none" aria-hidden="true">
-              <span className="script block text-[1.05rem] leading-none">The</span>
-              <span className="serif block text-[1.2rem] leading-none">Lifestyle Fresh</span>
+              <span className="script block text-[1.25rem] leading-none">The</span>
+              <span className="serif block text-[1.15rem] tracking-[-0.01em]">Lifestyle Fresh</span>
             </span>
           </Link>
           <Link href="/request" className="btn btn-ink">
@@ -39,7 +39,7 @@ export async function SiteHeader() {
         <NavLinks
           links={links}
           label="House"
-          className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 px-5 pb-2 text-[0.95rem]"
+          className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-7 px-5 pb-2"
         />
       </div>
     </header>

@@ -4,9 +4,9 @@ export const metadata: Metadata = { title: "Privacy" };
 
 export default function PrivacyPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 pb-24 pt-16">
-      <p className="eyebrow">House rules</p>
-      <h1 className="serif mt-4 text-5xl tracking-[-0.045em]">Privacy.</h1>
+    <div className="mx-auto max-w-3xl px-5 pb-24 pt-20">
+      <p className="eyebrow-brass">House rules</p>
+      <h1 className="serif mt-5 text-5xl tracking-[-0.02em]">Privacy.</h1>
       <div className="prose-lf mt-8">
         <p>
           We keep what we need to post an envelope and run a membership: your name, email,

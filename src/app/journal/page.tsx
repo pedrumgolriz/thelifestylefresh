@@ -7,8 +7,9 @@ import { publishedJournalPosts } from "@/lib/journal-posts";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Journal",
+  title: "The Journal",
   description: "Lifestyle, beauty, the table, and the house — from The Lifestyle Fresh journal.",
+  alternates: { canonical: "/journal" },
 };
 
 const categories = JOURNAL_SHELVES.map((shelf) => shelf.key);
@@ -50,11 +51,16 @@ export default async function JournalPage({
     }));
   }
 
+  const [lead, ...rest] = posts;
+
   return (
-    <div className="mx-auto max-w-6xl px-5 pb-24 pt-16">
-      <p className="script text-4xl">The journal</p>
-      <h1 className="serif mt-4 text-5xl tracking-[-0.04em] sm:text-6xl">A magazine you can keep.</h1>
-      <nav className="mt-8 flex flex-wrap gap-2" aria-label="Journal categories">
+    <div className="mx-auto max-w-6xl px-5 pb-24 pt-20">
+      <p className="script text-4xl sm:text-5xl">The journal</p>
+      <h1 className="serif mt-5 text-5xl tracking-[-0.02em] sm:text-6xl">
+        A magazine you can keep.
+      </h1>
+
+      <nav className="mt-9 flex flex-wrap gap-2" aria-label="Journal categories">
         <Link
           href="/journal"
           className={`btn ${!selected ? "btn-ink" : "btn-ghost"}`}
@@ -73,24 +79,43 @@ export default async function JournalPage({
           </Link>
         ))}
       </nav>
-      <div className="mt-10 grid gap-4 md:grid-cols-2">
-        {posts.map((post) => (
-          <Link
-            key={post.slug}
-            href={`/journal/${post.slug}`}
-            className="stationery overflow-hidden"
-          >
-            <div className={`h-40 cover-${post.coverTone}`} aria-hidden="true" />
-            <div className="p-6">
-              <p className="eyebrow">{shelfLabel(post.category)}</p>
-              <h2 className="serif mt-2 text-3xl tracking-[-0.03em]">{post.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-ink-soft">{post.excerpt}</p>
-            </div>
-          </Link>
-        ))}
-      </div>
+
+      {lead ? (
+        <Link
+          href={`/journal/${lead.slug}`}
+          className="stationery mt-12 grid overflow-hidden md:grid-cols-2"
+        >
+          <div className={`min-h-64 cover-${lead.coverTone}`} aria-hidden="true" />
+          <div className="p-8 sm:p-10">
+            <p className="eyebrow">{shelfLabel(lead.category)}</p>
+            <h2 className="serif mt-3 text-3xl tracking-[-0.02em] sm:text-4xl">{lead.title}</h2>
+            <p className="mt-4 text-base leading-7 text-ink-soft">{lead.excerpt}</p>
+            <span className="link-quiet mt-6">Read the essay</span>
+          </div>
+        </Link>
+      ) : null}
+
+      {rest.length > 0 ? (
+        <div className="mt-px grid gap-px md:grid-cols-2">
+          {rest.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/journal/${post.slug}`}
+              className="stationery overflow-hidden"
+            >
+              <div className={`h-48 cover-${post.coverTone}`} aria-hidden="true" />
+              <div className="p-7">
+                <p className="eyebrow">{shelfLabel(post.category)}</p>
+                <h2 className="serif mt-3 text-2xl tracking-[-0.02em]">{post.title}</h2>
+                <p className="mt-3 text-sm leading-6 text-ink-soft">{post.excerpt}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : null}
+
       {posts.length === 0 ? (
-        <p className="mt-10 text-ink-soft">The house is between issues.</p>
+        <p className="mt-12 text-ink-soft">The house is between issues.</p>
       ) : null}
     </div>
   );

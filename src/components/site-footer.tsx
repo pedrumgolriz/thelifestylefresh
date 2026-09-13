@@ -1,28 +1,26 @@
 import Link from "next/link";
-import { PRICE_LINE } from "@/lib/house";
+import { CONTINENTAL_LINE } from "@/lib/house";
 import { SHIPPING_SHORT } from "@/lib/us";
 import { Mark } from "./mark";
 import { NewsletterForm } from "./newsletter-form";
-import { Ornament } from "./ornament";
 
 const columns = [
   {
-    title: "House",
+    title: "The House",
     links: [
-      { href: "/the-box", label: "The Correspondence" },
+      { href: "/envelope", label: "The Envelope" },
+      { href: "/house", label: "The House" },
       { href: "/journal", label: "The Journal" },
-      { href: "/about", label: "The House" },
-      { href: "/request", label: "Request an Invitation" },
-      { href: "/join", label: "I have an invitation" },
+      { href: "/membership", label: "Membership" },
     ],
   },
   {
-    title: "Journal",
+    title: "Correspondence",
     links: [
-      { href: "/journal?category=Lifestyle", label: "Lifestyle" },
-      { href: "/journal?category=Beauty", label: "Beauty" },
-      { href: "/journal?category=Recipes", label: "Table" },
-      { href: "/journal?category=Journal", label: "House" },
+      { href: "/request", label: "Write to the house" },
+      { href: "/join", label: "I have a card" },
+      { href: "/account", label: "Your name" },
+      { href: "/login", label: "Member sign-in" },
     ],
   },
   {
@@ -32,54 +30,52 @@ const columns = [
       { href: "/shipping", label: "Shipping" },
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },
-      { href: "/login", label: "Member sign-in" },
     ],
   },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-[var(--rule)]">
-      <div className="mx-auto max-w-6xl px-5 pt-12">
-        <Ornament />
-      </div>
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
-        <div>
-          <div className="flex items-center gap-3">
-            <Mark className="h-14 w-14" decorative={false} />
-            <div>
-              <p className="serif text-2xl tracking-[-0.03em]">The Lifestyle Fresh</p>
-              <p className="eyebrow mt-1">Established 2019</p>
+    <footer className="mt-32 border-t border-[var(--rule)]">
+      <div className="mx-auto max-w-6xl px-5 pt-16 pb-10">
+        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <Mark className="h-14 w-14" decorative={false} />
+              <div>
+                <p className="serif text-2xl tracking-[-0.02em]">The Lifestyle Fresh</p>
+                <p className="eyebrow mt-1">Established 2019</p>
+              </div>
             </div>
+            <p className="mt-5 max-w-sm text-sm leading-6 text-ink-soft">
+              Correspondence from the house, once each month. {CONTINENTAL_LINE}
+            </p>
+            <p className="mt-5 text-sm">
+              <a className="link-quiet" href="mailto:hello@thelifestylefresh.com">
+                hello@thelifestylefresh.com
+              </a>
+            </p>
           </div>
-          <p className="mt-4 max-w-sm text-sm leading-6 text-ink-soft">
-            A monthly correspondence. {PRICE_LINE}. {SHIPPING_SHORT}
-          </p>
-          <p className="mt-6 text-sm">
-            <a className="underline" href="mailto:hello@thelifestylefresh.com">
-              hello@thelifestylefresh.com
-            </a>
-          </p>
+          {columns.map((column) => (
+            <nav key={column.title} aria-label={column.title}>
+              <p className="eyebrow">{column.title}</p>
+              <ul className="mt-4 space-y-1 text-sm">
+                {column.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="nav-ink text-ink-soft hover:text-ink">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
-        {columns.map((column) => (
-          <nav key={column.title} aria-label={column.title}>
-            <p className="eyebrow">{column.title}</p>
-            <ul className="mt-4 space-y-1 text-sm">
-              {column.links.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="nav-ink text-ink-soft hover:text-ink">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        ))}
       </div>
       <div className="border-t border-[var(--rule)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="script text-3xl">A note, digitally</p>
+            <p className="script text-3xl sm:text-4xl">A note, digitally</p>
             <p className="mt-2 max-w-md text-sm text-ink-soft">
               Occasional letters from the house. Never daily.
             </p>

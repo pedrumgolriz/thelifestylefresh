@@ -12,6 +12,7 @@ export function CookieBanner() {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(KEY);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- banner must appear only after hydration to avoid mismatch
     if (!stored) setVisible(true);
   }, []);
 

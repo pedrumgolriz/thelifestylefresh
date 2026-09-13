@@ -1,20 +1,26 @@
 import { MEMBERSHIP_PRICE_LABEL } from "./catalog";
-import { APPLICATIONS_OPEN, FIRST_CORRESPONDENCE, PRODUCT_SENTENCE } from "./house";
+import {
+  CAP_LINE,
+  CONTINENTAL_LINE,
+  HERO_HEADLINE,
+  PRODUCT_SENTENCE,
+} from "./house";
 
 export const SITE = {
   name: "The Lifestyle Fresh",
   url: (process.env.NEXT_PUBLIC_APP_URL || "https://thelifestylefresh.com").replace(/\/$/, ""),
   email: "hello@thelifestylefresh.com",
-  description: `${PRODUCT_SENTENCE} ${MEMBERSHIP_PRICE_LABEL}/month, shipping included. Applications open ${APPLICATIONS_OPEN}. First correspondence ${FIRST_CORRESPONDENCE}.`,
+  description: `${PRODUCT_SENTENCE} ${MEMBERSHIP_PRICE_LABEL}/month, postage included. ${CAP_LINE} ${CONTINENTAL_LINE}`,
 } as const;
 
 export const titles = {
-  home: "The Lifestyle Fresh — A little luxury, delivered by post",
-  about: "The house behind the monthly correspondence",
-  envelope: "What’s inside the monthly correspondence",
+  home: "The Lifestyle Fresh — A little luxury, delivered by post.",
+  house: "The house behind the correspondence",
+  envelope: "The envelope",
+  membership: "Membership",
   journal: "The Journal",
-  request: "Request an invitation",
-  join: "Redeem your invitation",
+  request: "Write to the house",
+  join: "I have a card",
   shipping: "Where the correspondence ships",
   privacy: "Privacy",
   cookies: "Cookies",
@@ -23,13 +29,14 @@ export const titles = {
 
 export const descriptions = {
   home: SITE.description,
-  about:
-    "Established in 2019 as an editorial project; now a physical monthly correspondence. Made by hand. Sent by post.",
+  house:
+    "Established 2019. Two hundred and fifty names at a time. Hand assembled, individually addressed, and posted from the continental United States.",
   envelope:
-    "A letter, always. Then paper, a little luxury, a delight, and something that asks you to send onward.",
+    "A letter, always. Then something for the table, the dressing table, something to send onward, and something unexpected. Never the whole table.",
+  membership: `Membership — ${MEMBERSHIP_PRICE_LABEL}/month. Twelve envelopes a year. Postage included. ${CAP_LINE}`,
   journal: "Lifestyle, beauty, the table, and the house — from The Lifestyle Fresh journal.",
-  request: `Applications open ${APPLICATIONS_OPEN}. Tell us why the post still matters.`,
-  join: "Your invitation is for you. Enter it and a contiguous U.S. address.",
+  request: `Write to the house. ${CAP_LINE} ${CONTINENTAL_LINE}`,
+  join: "Your invitation is for you. Enter it and a continental U.S. address.",
 } as const;
 
 export function jsonLdGraph() {
@@ -64,3 +71,5 @@ export function jsonLdGraph() {
     ],
   };
 }
+
+export { HERO_HEADLINE };

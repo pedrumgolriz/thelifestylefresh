@@ -5,9 +5,9 @@ export const metadata: Metadata = { title: "Shipping" };
 
 export default function ShippingPage() {
   return (
-    <div className="mx-auto max-w-3xl px-5 pb-24 pt-16">
-      <p className="eyebrow">The post</p>
-      <h1 className="serif mt-4 text-5xl tracking-[-0.045em]">{SHIPPING_SHORT}</h1>
+    <div className="mx-auto max-w-3xl px-5 pb-24 pt-20">
+      <p className="eyebrow-brass">The post</p>
+      <h1 className="serif mt-5 text-5xl tracking-[-0.02em]">{SHIPPING_SHORT}</h1>
       <div className="prose-lf mt-8">
         <p>{SHIPPING_COPY}</p>
         <p>We do not currently ship to:</p>

@@ -1,30 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  /* Crest: night field, brass monogram, wisteria, sage leaf, envelope ivory */
-  --night: #0b0b0b;
-  --paper: #f6f0e4;
-  --paper-deep: #e5d8c0;
-  --paper-lift: #fbf7ee;
-  --ink: #14110c;
-  --ink-soft: #3a3228;
-  --rule: rgba(184, 149, 58, 0.42);
-  --gold: #b8953a;
-  --gold-deep: #6b5420;
-  --wisteria: #c9b5dc;
-  --seal: #4f3a68;
-  --sage: #5e6b45;
-  --ribbon: #d4c4e8;
-  --blush: #c9b5dc;
-  --hydrangea: #8d7aa3;
-  --navy: #0b0b0b;
-  --glass: rgba(251, 247, 238, 0.96);
-  --glass-border: #b8953a;
-  --shadow: 0 22px 48px rgba(11, 11, 11, 0.16);
+  /* The Lifestyle Fresh — refined material system. */
+  --paper: #f5f0e7;        /* Warm Ivory */
+  --paper-deep: #e8ded0;   /* Paper Cream */
+  --paper-lift: #fbf8f1;
+  --paper-warm: #efe7d8;
+
+  --ink: #24231f;         /* Deep Ink */
+  --ink-soft: #57524a;
+  --ink-faint: #8a8478;
+
+  --lilac: #817080;       /* Muted Lilac/Plum */
+  --lilac-deep: #5f4f60;
+  --plum: #4a3563;        /* deeper, legible purple for the cursive kickers */
+  --brass: #a58a55;       /* Antique Brass */
+  --brass-deep: #7c663f;
+  --oxblood: #542f32;     /* used extremely sparingly */
+
+  --rule: rgba(36, 35, 31, 0.14);
+  --rule-brass: rgba(165, 138, 85, 0.42);
+
+  --shadow-soft: 0 1px 2px rgba(36, 35, 31, 0.04), 0 18px 40px rgba(36, 35, 31, 0.06);
+  --shadow-lift: 0 2px 4px rgba(36, 35, 31, 0.05), 0 28px 56px rgba(36, 35, 31, 0.08);
+
+  --glass: rgba(245, 240, 231, 0.92);
+
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-press: cubic-bezier(0.16, 1, 0.3, 1);
-  --focus: #0b0b0b;
-  --focus-ring: #b8953a;
+  --focus: var(--ink);
+  --focus-ring: var(--brass);
 }
 
 @theme inline {
@@ -33,13 +38,21 @@
   --color-paper-lift: var(--paper-lift);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-blush: var(--blush);
-  --color-wisteria: var(--wisteria);
-  --color-hydrangea: var(--hydrangea);
-  --color-sage: var(--sage);
-  --color-gold: var(--gold-deep);
-  --color-seal: var(--seal);
-  --color-navy: var(--navy);
+  --color-lilac: var(--lilac);
+  --color-lilac-deep: var(--lilac-deep);
+  --color-plum: var(--plum);
+  --color-brass: var(--brass);
+  --color-brass-deep: var(--brass-deep);
+  --color-oxblood: var(--oxblood);
+  /* Backward-compatible aliases so existing classes resolve to the new palette. */
+  --color-seal: var(--lilac-deep);
+  --color-gold: var(--brass);
+  --color-blush: var(--lilac);
+  --color-wisteria: var(--lilac);
+  --color-hydrangea: var(--lilac-deep);
+  --color-sage: var(--brass-deep);
+  --color-navy: var(--ink);
+  --color-night: var(--ink);
   --font-sans: var(--font-body);
   --font-serif: var(--font-display);
   --font-script: var(--font-script);
@@ -57,18 +70,14 @@ html {
 
 body {
   min-height: 100%;
-  background:
-    radial-gradient(900px 480px at 8% -10%, rgba(201, 181, 220, 0.34), transparent 52%),
-    radial-gradient(720px 400px at 100% 8%, rgba(212, 196, 232, 0.22), transparent 48%),
-    radial-gradient(640px 360px at 50% 120%, rgba(184, 149, 58, 0.1), transparent 50%),
-    var(--paper);
-  background-size: 140% 140%, 130% 130%, 120% 120%, auto;
-  animation: wash-drift 36s var(--ease) infinite;
+  background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-body), "Iowan Old Style", Georgia, serif;
-  font-size: 1.125rem;
+  font-family: var(--font-body), "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-size: 1.0625rem;
   line-height: 1.7;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body::before {
@@ -107,7 +116,7 @@ a {
   top: 0.75rem;
   z-index: 80;
   padding: 0.7rem 1.1rem;
-  background: var(--night);
+  background: var(--ink);
   color: var(--paper-lift);
   transform: translateY(-160%);
 }
@@ -121,55 +130,89 @@ a {
 .serif {
   font-family: var(--font-display), "Iowan Old Style", Palatino, Georgia, serif;
   font-optical-sizing: auto;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.04;
+}
+
+.serif-italic {
+  font-family: var(--font-display), "Iowan Old Style", Palatino, Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .script {
   font-family: var(--font-script), "Snell Roundhand", cursive;
   font-weight: 400;
-  color: var(--seal);
-  line-height: 1.1;
+  color: var(--plum);
+  line-height: 1.18;
+  letter-spacing: 0.012em;
+  text-wrap: balance;
 }
 
 .eyebrow {
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  font-variant: small-caps;
-  text-transform: lowercase;
-  color: var(--ink);
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.eyebrow-brass {
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass-deep);
+}
+
+/* A restrained brass rule — behaves like a physical line on stationery. */
+.brass-rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--brass) 18%,
+    var(--brass) 82%,
+    transparent
+  );
 }
 
 .gold-rule {
-  height: 5px;
+  height: 1px;
   border: 0;
-  background:
-    linear-gradient(var(--gold), var(--gold)) 0 0 / 100% 1px no-repeat,
-    linear-gradient(var(--gold), var(--gold)) 0 100% / 100% 1px no-repeat;
+  background: linear-gradient(var(--brass), var(--brass)) 0 0 / 100% 1px no-repeat;
 }
 
 .invite-card,
 .glass,
 .glass-strong {
   background: var(--paper-lift);
-  border: 1px solid var(--gold);
-  border-radius: 2px;
-  box-shadow:
-    inset 0 0 0 8px var(--paper-lift),
-    inset 0 0 0 9px rgba(184, 149, 58, 0.55),
-    0 18px 40px rgba(79, 58, 104, 0.08);
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  box-shadow: var(--shadow-soft);
+}
+
+.invite-card {
+  border-color: var(--rule-brass);
 }
 
 .glass,
 .glass-strong {
-  box-shadow: var(--shadow);
+  background: var(--glass);
+}
+
+.glass-strong {
+  box-shadow: var(--shadow-lift);
 }
 
 .masthead {
   background: var(--glass);
-  border-bottom: 1px solid var(--gold);
+  backdrop-filter: saturate(1.05) blur(8px);
+  border-bottom: 1px solid var(--rule);
 }
 
 .btn {
@@ -177,14 +220,14 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 3rem;
-  min-width: 3rem;
-  padding: 0.7rem 1.1rem;
-  border-radius: 2px;
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  min-height: 2.85rem;
+  min-width: 2.85rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 1px;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: center;
   white-space: normal;
@@ -192,32 +235,33 @@ a {
     transform 280ms var(--ease),
     background 280ms var(--ease),
     color 280ms var(--ease),
-    box-shadow 280ms var(--ease);
+    border-color 280ms var(--ease);
 }
 
 .btn-ink {
-  background: var(--night);
+  background: var(--ink);
   color: var(--paper-lift);
-  box-shadow: 0 8px 22px rgba(11, 11, 11, 0.22);
+  box-shadow: 0 6px 18px rgba(36, 35, 31, 0.16);
 }
 
 .btn-ink:hover {
-  background: #1c1c1c;
+  background: #1a1916;
   transform: translateY(-1px);
 }
 
 .btn-ghost {
   background: transparent;
-  border: 1px solid var(--gold-deep);
+  border: 1px solid var(--brass-deep);
   color: var(--ink);
 }
 
 .btn-ghost:hover {
-  background: rgba(201, 181, 220, 0.22);
+  background: var(--paper-warm);
+  border-color: var(--brass);
 }
 
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 
 .btn:disabled,
@@ -229,76 +273,124 @@ a {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
-  box-shadow: 0 0 0 6px var(--night);
+}
+
+/* A quiet text link that reads as correspondence, not commerce. */
+.link-quiet {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  border-bottom: 1px solid var(--rule-brass);
+  padding-bottom: 0.15rem;
+  transition: color 280ms var(--ease), border-color 280ms var(--ease);
+}
+
+.link-quiet:hover {
+  color: var(--brass-deep);
+  border-color: var(--brass);
 }
 
 .field {
   width: 100%;
   min-height: 3rem;
-  border-radius: 2px;
-  border: 1px solid var(--gold-deep);
+  border-radius: 1px;
+  border: 1px solid var(--rule);
   background: var(--paper-lift);
-  padding: 0.8rem 0.95rem;
+  padding: 0.85rem 1rem;
   color: var(--ink);
   outline: none;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
   transition: border-color 200ms var(--ease), box-shadow 200ms var(--ease);
+}
+
+.field::placeholder {
+  color: var(--ink-faint);
 }
 
 .field:focus,
 .field:focus-visible {
-  border-color: var(--night);
-  box-shadow: 0 0 0 3px rgba(184, 149, 58, 0.45);
-  outline: 3px solid var(--night);
-  outline-offset: 2px;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 1px var(--ink);
+  outline: none;
 }
 
 .prose-lf {
   color: var(--ink);
-  font-size: 1.125rem;
-  line-height: 1.75;
+  font-size: 1.0625rem;
+  line-height: 1.8;
 }
 
 .prose-lf h2,
 .prose-lf h3 {
   font-family: var(--font-display), Georgia, serif;
-  letter-spacing: -0.01em;
-  margin: 2rem 0 0.75rem;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  margin: 2.25rem 0 0.85rem;
+}
+
+.prose-lf h2 {
+  font-size: 1.9rem;
+}
+
+.prose-lf h3 {
+  font-size: 1.4rem;
 }
 
 .prose-lf p {
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
+}
+
+.prose-lf ul,
+.prose-lf ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.prose-lf li {
+  margin: 0.4rem 0;
 }
 
 .cover-paper {
-  background: linear-gradient(160deg, #f6f0e4 0%, #d4c08a 100%);
+  background: linear-gradient(165deg, #f5f0e7 0%, #e3d6bf 100%);
 }
 .cover-seal {
-  background: linear-gradient(160deg, #c9b5dc 0%, #4f3a68 100%);
+  background: linear-gradient(165deg, #d9c7dc 0%, #5f4f60 100%);
 }
 .cover-blush {
-  background: linear-gradient(160deg, #efe4f6 0%, #c9b5dc 100%);
+  background: linear-gradient(165deg, #efe4ec 0%, #b7a3c4 100%);
 }
 .cover-sage {
-  background: linear-gradient(160deg, #d7ddc8 0%, #5e6b45 100%);
+  background: linear-gradient(165deg, #dcdcc8 0%, #7c8367 100%);
 }
 .cover-ink {
-  background: linear-gradient(160deg, #3a3228 0%, #0b0b0b 100%);
+  background: linear-gradient(165deg, #4a463e 0%, #24231f 100%);
 }
 .cover-wisteria {
-  background: linear-gradient(160deg, #efe4f6 0%, #8d7aa3 100%);
+  background: linear-gradient(165deg, #e4d4ee 0%, #817080 100%);
 }
 .cover-hydrangea {
-  background: linear-gradient(160deg, #e4d4ee 0%, #4f3a68 100%);
+  background: linear-gradient(165deg, #ddd2e6 0%, #5f4f60 100%);
+}
+.cover-oxblood {
+  background: linear-gradient(165deg, #6e3a3d 0%, #3a1f21 100%);
+}
+.cover-brass {
+  background: linear-gradient(165deg, #efe2c8 0%, #a58a55 100%);
 }
 
 .envelope {
   position: relative;
   aspect-ratio: 5 / 3.4;
   background: var(--paper-lift);
-  border: 1px solid var(--gold);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--rule-brass);
+  box-shadow: var(--shadow-soft);
 }
 
 .envelope::before {
@@ -307,9 +399,9 @@ a {
   inset: 0 auto auto 0;
   width: 100%;
   height: 46%;
-  background: linear-gradient(180deg, #fbf7ee 0%, #ead9b8 100%);
+  background: linear-gradient(180deg, #fbf8f1 0%, #e8dcc4 100%);
   clip-path: polygon(0 0, 50% 72%, 100% 0);
-  border-bottom: 1px solid var(--gold);
+  border-bottom: 1px solid var(--rule-brass);
 }
 
 .cameo {
@@ -318,8 +410,7 @@ a {
   border-radius: 50%;
   padding: 0;
   background: var(--paper);
-  animation: cameo-breathe 10s var(--ease) infinite;
-  box-shadow: 0 22px 50px rgba(79, 58, 104, 0.12);
+  box-shadow: var(--shadow-soft);
 }
 
 .cameo img {
@@ -336,16 +427,18 @@ a {
 }
 
 .scarcity-track {
-  height: 8px;
+  height: 3px;
   width: 100%;
-  max-width: 16rem;
+  max-width: 18rem;
   background: var(--paper-deep);
-  border: 1px solid var(--gold-deep);
+  border-radius: 999px;
+  overflow: hidden;
 }
 
 .scarcity-fill {
   height: 100%;
-  background: var(--seal);
+  background: var(--ink);
+  transition: width 600ms var(--ease);
 }
 
 .nav-ink {
@@ -353,23 +446,29 @@ a {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
   transition: color 280ms var(--ease);
 }
 
+.nav-ink:hover {
+  color: var(--ink);
+}
+
 .nav-ink[aria-current="page"] {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.28em;
+  color: var(--ink);
 }
 
 .nav-ink::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 0.35rem;
+  bottom: 0.4rem;
   width: 100%;
   height: 1px;
-  background: var(--gold);
+  background: var(--brass);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 380ms var(--ease);
@@ -381,10 +480,10 @@ a {
 }
 
 .stationery {
-  border: 1px solid var(--gold);
+  border: 1px solid var(--rule);
   background: var(--paper-lift);
-  border-radius: 2px;
-  box-shadow: inset 0 0 0 6px var(--paper-lift), inset 0 0 0 7px rgba(184, 149, 58, 0.4);
+  border-radius: 1px;
+  box-shadow: var(--shadow-soft);
   transition:
     transform 520ms var(--ease),
     box-shadow 520ms var(--ease),
@@ -393,23 +492,20 @@ a {
 
 .stationery:hover,
 .stationery:focus-visible {
-  transform: translateY(-3px);
-  box-shadow:
-    inset 0 0 0 6px var(--paper-lift),
-    inset 0 0 0 7px rgba(184, 149, 58, 0.65),
-    0 18px 40px rgba(79, 58, 104, 0.12);
+  transform: translateY(-2px);
+  border-color: var(--rule-brass);
+  box-shadow: var(--shadow-lift);
 }
 
 .ledger {
-  border-top: 1px solid var(--gold);
-  border-bottom: 1px solid var(--gold);
-  background:
-    linear-gradient(var(--gold), var(--gold)) 0 4px / 100% 1px no-repeat;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: none;
 }
 
 .ledger-row {
   border-bottom: 1px solid var(--rule);
-  transition: background 420ms var(--ease), padding 420ms var(--ease);
+  transition: background 420ms var(--ease);
 }
 
 .ledger-row:last-child {
@@ -417,7 +513,7 @@ a {
 }
 
 .ledger-row:hover {
-  background: rgba(201, 181, 220, 0.14);
+  background: var(--paper-warm);
 }
 
 .row-quiet {
@@ -425,7 +521,7 @@ a {
 }
 
 .row-quiet:hover {
-  background: rgba(201, 181, 220, 0.16);
+  background: var(--paper-warm);
 }
 
 .reveal-page {
@@ -597,10 +693,10 @@ a {
 @keyframes wash-drift {
   0%,
   100% {
-    background-position: 0% 0%, 100% 0%, 50% 100%, 0 0;
+    background-position: 0 0;
   }
   50% {
-    background-position: 80% 20%, 10% 40%, 40% 80%, 0 0;
+    background-position: 0 0;
   }
 }
 
@@ -610,34 +706,41 @@ a {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
 }
 
 .season-winter {
-  background: linear-gradient(160deg, #7a1d24 0%, #c9a24a 100%);
+  background: linear-gradient(165deg, #6e3a3d 0%, #a58a55 100%);
 }
 .season-spring {
-  background: linear-gradient(160deg, #b7c9d8 0%, #c5c7cc 100%);
+  background: linear-gradient(165deg, #d9c7dc 0%, #817080 100%);
 }
 .season-summer {
-  background: linear-gradient(160deg, #fbf7ee 0%, #d4c08a 100%);
+  background: linear-gradient(165deg, #fbf8f1 0%, #c9b48f 100%);
 }
 .season-autumn {
-  background: linear-gradient(160deg, #e8c4d0 0%, #c9a24a 100%);
+  background: linear-gradient(165deg, #c9a48f 0%, #7c663f 100%);
 }
 
 .product-frame {
-  overflow: hidden;
-  border: 1px solid var(--gold);
-  box-shadow: var(--shadow);
   background: var(--paper-lift);
+  padding: 14px;
+  border: 1px solid var(--rule-brass);
+  box-shadow: var(--shadow-soft);
 }
 
 .product-frame img {
   display: block;
   width: 100%;
   height: auto;
+  border: 1px solid var(--rule);
+}
+
+@media (max-width: 640px) {
+  .product-frame {
+    padding: 10px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -683,9 +786,9 @@ a {
 
 @media (prefers-contrast: more) {
   :root {
-    --ink-soft: #14110c;
-    --gold: #6b5420;
-    --rule: #14110c;
+    --ink-soft: #24231f;
+    --brass: #7c663f;
+    --rule: #24231f;
   }
 
   .btn-ghost,

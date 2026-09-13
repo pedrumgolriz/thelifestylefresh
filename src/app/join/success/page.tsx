@@ -16,10 +16,10 @@ export default function JoinSuccessPage() {
       </p>
       <div className="mt-8 flex justify-center gap-3">
         <Link href="/account" className="btn btn-ink">
-          Membership
+          Your name
         </Link>
-        <Link href="/the-box" className="btn btn-ghost">
-          What’s inside
+        <Link href="/envelope" className="btn btn-ghost">
+          The envelope
         </Link>
       </div>
     </div>
