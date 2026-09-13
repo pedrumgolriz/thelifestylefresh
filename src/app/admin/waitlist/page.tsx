@@ -12,11 +12,11 @@ export default async function AdminWaitlistPage() {
 
   return (
     <div>
-      <p className="eyebrow">Wait</p>
-      <h1 className="serif mt-3 text-4xl">Until a seat opens.</h1>
+      <p className="eyebrow-brass">Wait</p>
+      <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">Until a seat opens.</h1>
       <p className="mt-3 text-sm text-ink-soft">
-        {seats.remaining} open · {waiting.length} waiting. Oldest first. Issue a card only if
-        a seat is free — or raise the cap first.
+        {seats.remaining} open · {waiting.length} waiting. Oldest first. Issue an invitation
+        only if a seat is free — or raise the cap first.
       </p>
       <div className="mt-8 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
         {waiting.map((request, index) => (

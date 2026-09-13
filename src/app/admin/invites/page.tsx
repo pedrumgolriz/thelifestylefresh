@@ -6,8 +6,8 @@ export default async function AdminInvitesPage() {
   return (
     <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
       <div>
-        <p className="eyebrow">Invites</p>
-        <h1 className="serif mt-3 text-4xl tracking-[-0.04em]">Codes.</h1>
+        <p className="eyebrow-brass">Invites</p>
+        <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">Codes.</h1>
         <form action="/api/admin/invites" method="post" className="mt-6 grid gap-3">
           <input className="field" name="code" placeholder="Code (blank to generate)" />
           <input className="field" name="email" type="email" placeholder="Lock to email (optional)" />

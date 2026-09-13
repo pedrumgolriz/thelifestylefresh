@@ -46,11 +46,11 @@ const questions = [
   },
   {
     q: "What happens after I write to the house?",
-    a: "We read your note. If there is a place, we send a card with the next step. If the table is full, we keep your name and write when a place opens. There is nothing to refresh.",
+    a: "We read your note. If there is a place, we send an invitation with the next step. If the table is full, we keep your name and write when a place opens. There is nothing to refresh.",
   },
   {
     q: "Is invitation only real?",
-    a: "Yes. Membership is not sold on the public house. A card is issued when there is a seat. The house keeps 250 names at a time.",
+    a: "Yes. Membership is not sold on the public house. An invitation is issued when there is a seat. The house keeps 250 names at a time.",
   },
 ] as const;
 

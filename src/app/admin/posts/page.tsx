@@ -8,8 +8,8 @@ export default async function AdminPostsPage() {
     <div>
       <div className="flex items-end justify-between gap-4">
         <div>
-          <p className="eyebrow">Journal</p>
-          <h1 className="serif mt-3 text-4xl tracking-[-0.04em]">Essays.</h1>
+          <p className="eyebrow-brass">Journal</p>
+          <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">Essays.</h1>
         </div>
         <Link href="/admin/posts/new" className="btn btn-ink">
           New essay

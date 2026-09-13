@@ -51,7 +51,7 @@ export const HOW_IT_WORKS = [
   },
   {
     n: "02",
-    title: "Receive a card",
+    title: "Receive an invitation",
     lede: "When a place opens, the house writes. There is nothing to refresh.",
   },
   {

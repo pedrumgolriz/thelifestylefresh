@@ -5,8 +5,8 @@ export default async function AdminNewsletterPage() {
 
   return (
     <div>
-      <p className="eyebrow">Newsletter</p>
-      <h1 className="serif mt-3 text-4xl tracking-[-0.04em]">Digital letters.</h1>
+      <p className="eyebrow-brass">Newsletter</p>
+      <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">Digital letters.</h1>
       <div className="mt-8 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
         {rows.map((row) => (
           <div key={row.id} className="flex justify-between gap-4 py-4 text-sm">

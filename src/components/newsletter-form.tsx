@@ -46,7 +46,7 @@ export function NewsletterForm({ source = "site" }: { source?: string }) {
         />
       </label>
       <button className="btn btn-ink shrink-0 self-end" disabled={status === "loading"}>
-        {status === "loading" ? "Sending" : "Subscribe"}
+        {status === "loading" ? "Sending" : "Send me the note"}
       </button>
       {message ? (
         <p

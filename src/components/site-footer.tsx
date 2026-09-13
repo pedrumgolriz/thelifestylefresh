@@ -18,7 +18,7 @@ const columns = [
     title: "Correspondence",
     links: [
       { href: "/request", label: "Write to the house" },
-      { href: "/join", label: "I have a card" },
+      { href: "/join", label: "I have an invitation" },
       { href: "/account", label: "Your name" },
       { href: "/login", label: "Member sign-in" },
     ],

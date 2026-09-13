@@ -11,8 +11,8 @@ export default async function AdminRequestsPage() {
 
   return (
     <div>
-      <p className="eyebrow">Requests</p>
-      <h1 className="serif mt-3 text-4xl tracking-[-0.04em]">Who asked.</h1>
+      <p className="eyebrow-brass">Requests</p>
+      <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">Who asked.</h1>
       <div className="mt-8 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
         {requests.map((request) => (
           <div key={request.id} className="grid gap-4 py-6 md:grid-cols-[1fr_auto]">

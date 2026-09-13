@@ -36,7 +36,7 @@ export default async function RequestPage() {
         </div>
         <p className="mt-8">
           <Link href="/join" className="link-quiet">
-            I have a card
+            I have an invitation
           </Link>
         </p>
       </div>

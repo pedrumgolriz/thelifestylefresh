@@ -9,8 +9,8 @@ export default async function AdminEditionsPage() {
   return (
     <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
       <div>
-        <p className="eyebrow">Editions</p>
-        <h1 className="serif mt-3 text-4xl tracking-[-0.04em]">This month’s seal.</h1>
+        <p className="eyebrow-brass">Editions</p>
+        <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">This month’s seal.</h1>
         <form action="/api/admin/editions" method="post" className="mt-6 grid gap-3">
           <div className="grid grid-cols-2 gap-3">
             <input className="field" name="month" type="number" min={1} max={12} placeholder="Month" required />

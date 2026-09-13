@@ -20,7 +20,7 @@ export const titles = {
   membership: "Membership",
   journal: "The Journal",
   request: "Write to the house",
-  join: "I have a card",
+  join: "I have an invitation",
   shipping: "Where the correspondence ships",
   privacy: "Privacy",
   cookies: "Cookies",

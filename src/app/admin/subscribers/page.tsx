@@ -9,8 +9,8 @@ export default async function AdminSubscribersPage() {
 
   return (
     <div>
-      <p className="eyebrow">Members</p>
-      <h1 className="serif mt-3 text-4xl tracking-[-0.04em]">The list.</h1>
+      <p className="eyebrow-brass">Members</p>
+      <h1 className="serif mt-3 text-4xl tracking-[-0.02em]">The list.</h1>
       <div className="mt-8 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
         {members.map((member) => (
           <div key={member.id} className="grid gap-2 py-5 md:grid-cols-[1.2fr_1fr_0.6fr]">

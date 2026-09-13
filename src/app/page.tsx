@@ -209,7 +209,7 @@ export default async function HomePage() {
             {invitationCta(closed)}
           </Link>
           <Link href="/join" className="btn btn-ghost">
-            I have a card
+            I have an invitation
           </Link>
         </div>
       </section>

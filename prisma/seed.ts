@@ -23,6 +23,36 @@ async function main() {
     create: { email, passwordHash, name: "Editor", role: "ADMIN" },
   });
 
+  // Local convenience: a regular member account so you can sign in at /login
+  // without running a Stripe checkout. Only seeded outside production.
+  if (process.env.NODE_ENV !== "production") {
+    const memberEmail = (process.env.MEMBER_EMAIL || "member@thelifestylefresh.com").toLowerCase();
+    const memberPassword = process.env.MEMBER_PASSWORD || "member-changeme";
+    const memberHash = await hash(memberPassword, 12);
+    await prisma.user.upsert({
+      where: { email: memberEmail },
+      update: {
+        passwordHash: memberHash,
+        name: "A Member",
+        role: "MEMBER",
+        addressLine1: "1 Library Way",
+        city: "Portland",
+        state: "OR",
+        postalCode: "97201",
+      },
+      create: {
+        email: memberEmail,
+        passwordHash: memberHash,
+        name: "A Member",
+        role: "MEMBER",
+        addressLine1: "1 Library Way",
+        city: "Portland",
+        state: "OR",
+        postalCode: "97201",
+      },
+    });
+  }
+
   await prisma.invite.upsert({
     where: { code: "FRESH-FOUNDING" },
     update: {},

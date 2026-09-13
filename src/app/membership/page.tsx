@@ -51,7 +51,7 @@ export default async function MembershipPage() {
             {invitationCta(seats.atCapacity)}
           </Link>
           <Link href="/join" className="btn btn-ghost">
-            I have a card
+            I have an invitation
           </Link>
         </div>
       </div>
