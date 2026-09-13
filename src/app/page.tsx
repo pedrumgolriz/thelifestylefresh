@@ -4,7 +4,6 @@ import { Ornament } from "@/components/ornament";
 import { SeatMeter } from "@/components/seat-meter";
 import { prisma } from "@/lib/db";
 import {
-  ARCHIVE,
   CAP_LINE,
   CONTINENTAL_LINE,
   ENVELOPE_CATEGORIES,
@@ -16,6 +15,21 @@ import { publishedJournalPosts } from "@/lib/journal-posts";
 import { getMembershipSnapshot } from "@/lib/membership";
 
 export const dynamic = "force-dynamic";
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 export default async function HomePage() {
   let posts: { slug: string; title: string; excerpt: string; category: string; coverTone: string }[] =
@@ -45,6 +59,27 @@ export default async function HomePage() {
 
   const seats = await getMembershipSnapshot();
   const closed = seats.atCapacity;
+
+  // Previous envelopes — only editions the house has actually published.
+  // Empty until a real edition is marked published in /admin/editions.
+  let editions: {
+    id: string;
+    month: number;
+    year: number;
+    title: string;
+    letter: string;
+    items: { name: string; category: string }[];
+  }[] = [];
+  try {
+    editions = await prisma.edition.findMany({
+      where: { published: true },
+      orderBy: [{ year: "desc" }, { month: "desc" }],
+      take: 8,
+      include: { items: { orderBy: { sortOrder: "asc" }, select: { name: true, category: true } } },
+    });
+  } catch {
+    editions = [];
+  }
 
   return (
     <div className="reveal-page">
@@ -131,37 +166,41 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* From the archive — real previous envelopes. */}
-      <section className="mx-auto max-w-6xl px-5 pt-28" aria-labelledby="archive-heading">
-        <div className="flex items-end justify-between gap-4">
-        <div>
-          <p className="script text-4xl sm:text-5xl">From the archive</p>
-          <h2 id="archive-heading" className="serif mt-4 text-4xl sm:text-5xl">
-            Previous envelopes
-          </h2>
-        </div>
-        </div>
-        <p className="mt-5 max-w-lg text-lg leading-8 text-ink">
-          A record of what the house has sent. The archive shows the character of the
-          envelope without spoiling the next one.
-        </p>
-        <ul className="mt-12 grid gap-px sm:grid-cols-2 lg:grid-cols-4">
-          {ARCHIVE.map((entry) => (
-            <li key={`${entry.month}-${entry.year}`} className="stationery overflow-hidden">
-              <div className={`relative h-44 cover-${entry.tone}`} aria-hidden="true">
-                <span className="serif-italic absolute bottom-3 left-4 text-lg text-paper-lift">
-                  {entry.month}
-                </span>
-              </div>
-              <div className="p-5">
-                <p className="eyebrow">{entry.year}</p>
-                <h3 className="serif mt-2 text-xl">{entry.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-ink-soft">{entry.note}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* From the archive — real previous envelopes (only when published editions exist). */}
+      {editions.length > 0 ? (
+        <section className="mx-auto max-w-6xl px-5 pt-28" aria-labelledby="archive-heading">
+          <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="script text-4xl sm:text-5xl">From the archive</p>
+            <h2 id="archive-heading" className="serif mt-4 text-4xl sm:text-5xl">
+              Previous envelopes
+            </h2>
+          </div>
+          </div>
+          <p className="mt-5 max-w-lg text-lg leading-8 text-ink">
+            A record of what the house has sent. The archive shows the character of the
+            envelope without spoiling the next one.
+          </p>
+          <ul className="mt-12 grid gap-px sm:grid-cols-2 lg:grid-cols-4">
+            {editions.map((entry) => (
+              <li key={entry.id} className="stationery overflow-hidden">
+                <div className="relative h-44 cover-paper" aria-hidden="true">
+                  <span className="serif-italic absolute bottom-3 left-4 text-lg text-paper-lift">
+                    {MONTHS[entry.month - 1]}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <p className="eyebrow">{entry.year}</p>
+                  <h3 className="serif mt-2 text-xl">{entry.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-ink-soft">
+                    {entry.items.slice(0, 3).map((i) => i.name).join(" · ") || entry.letter}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       {/* The journal — fewer, larger stories. */}
       {posts.length > 0 ? (

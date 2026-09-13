@@ -118,7 +118,7 @@ async function main() {
       title: "September — first seal",
       letter:
         "Welcome to the desk. This month the envelope leans warm: a beauty ritual, a lemon-bright recipe, pink and blue hearts, a map fragment, and a letter you can keep under a book.",
-      published: true,
+      published: false,
     },
     create: {
       month: 9,
@@ -126,7 +126,7 @@ async function main() {
       title: "September — first seal",
       letter:
         "Welcome to the desk. This month the envelope leans warm: a beauty ritual, a lemon-bright recipe, pink and blue hearts, a map fragment, and a letter you can keep under a book.",
-      published: true,
+      published: false,
     },
   });
 
