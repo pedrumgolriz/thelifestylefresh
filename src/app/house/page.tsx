@@ -20,7 +20,7 @@ const facts = [
   { label: "Established", value: "2019" },
   { label: "The list", value: "250 names at a time" },
   { label: "Assembled", value: "By hand" },
-  { label: "Posted from", value: "The continental United States" },
+  { label: "Posted from", value: "The United States" },
   { label: "Addressed", value: "Individually, to you" },
 ];
 
@@ -36,17 +36,6 @@ export default async function HousePage() {
         Lifestyle Fresh began as a journal. The work now is an envelope — assembled by hand,
         tied in ribbon, and posted once a month to a very small circle of names.
       </p>
-
-      <figure className="mt-12 flex flex-col items-center gap-3">
-        <Image
-          src="/crest-ivory.jpg"
-          alt="The seal of The Lifestyle Fresh: a wax-pressed crest bearing the house monogram."
-          width={224}
-          height={224}
-          className="crest mark-seal"
-        />
-        <figcaption className="eyebrow">The seal of the house</figcaption>
-      </figure>
 
       <ul className="mt-12 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
         {facts.map((fact) => (
@@ -74,6 +63,17 @@ export default async function HousePage() {
           Explore the envelope
         </Link>
       </div>
+
+      <figure className="mt-16 flex flex-col items-center gap-3">
+        <Image
+          src="/crest-ivory.jpg"
+          alt="The seal of The Lifestyle Fresh: a wax-pressed crest bearing the house monogram."
+          width={256}
+          height={256}
+          className="crest mark-seal"
+        />
+        <figcaption className="eyebrow">The seal of the house</figcaption>
+      </figure>
     </div>
   );
 }

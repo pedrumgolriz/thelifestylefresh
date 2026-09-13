@@ -31,7 +31,7 @@ export const titles = {
 export const descriptions = {
   home: SITE.description,
   house:
-    "Established 2019. Two hundred and fifty names at a time. Hand assembled, individually addressed, and posted from the continental United States.",
+    "Established 2019. Two hundred and fifty names at a time. Hand assembled, individually addressed, and posted from the United States.",
   envelope:
     "A letter, always. Then something for the table, the dressing table, something to send onward, and something unexpected. Never the whole table.",
   membership: `Membership — ${MEMBERSHIP_PRICE_LABEL}/month. Twelve envelopes a year. Postage included. ${CAP_LINE}`,
