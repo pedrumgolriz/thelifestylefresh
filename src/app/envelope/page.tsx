@@ -35,10 +35,10 @@ export default async function EnvelopePage() {
         </div>
         <figure className="invite-arrive product-frame">
           <Image
-            src="/correspondence-opened.jpg"
-            alt="An opened Lifestyle Fresh correspondence: letter, recipe card, postcard, ribbon, and small objects laid on linen in natural light."
-            width={1600}
-            height={1200}
+            src="/envelope-flatlay.jpg"
+            alt="A flat lay of The Lifestyle Fresh correspondence on marble: an ivory invitation card with a sketched manor in gold and calligraphy, a wax-seal stamper, forget-me-not-lined envelopes, lavender ribbon, alliums, and a cameo brooch in soft natural light."
+            width={1024}
+            height={682}
             priority
             sizes="(max-width: 1024px) 100vw, 40vw"
           />
