@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { SHARE_CODES_PER_ENVELOPE } from "@/lib/house";
 
 export const dynamic = "force-dynamic";
 
@@ -85,12 +86,12 @@ export default async function AdminEditionsPage() {
                       type="number"
                       min={1}
                       max={50}
-                      defaultValue={5}
+                      defaultValue={SHARE_CODES_PER_ENVELOPE}
                     />
                   </label>
                   <button className="btn btn-ink">Generate codes</button>
                   <span className="text-xs text-ink-soft">
-                    ≈ {memberCount} × 5 = {memberCount * 5} at the default
+                    ≈ {memberCount} × {SHARE_CODES_PER_ENVELOPE} = {memberCount * SHARE_CODES_PER_ENVELOPE} at the default
                   </span>
                 </form>
 

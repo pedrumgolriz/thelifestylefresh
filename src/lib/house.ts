@@ -19,6 +19,11 @@ export const CAP_LINE_LONG = "The house keeps 250 names at a time.";
 
 export const CONTINENTAL_LINE = "Posted from the continental United States.";
 
+// The shareable invitation — codes members pass to friends inside each envelope.
+export const SHARE_CODES_PER_ENVELOPE = 5;
+export const SHARE_CODE_PREFIX = "LF-SHARE";
+export const SHARE_LINE = `Each envelope carries ${SHARE_CODES_PER_ENVELOPE} one-time invitations a member may pass to a friend.`;
+
 // The character of the envelope — categories, not an inventory.
 export const ENVELOPE_CATEGORIES = [
   {

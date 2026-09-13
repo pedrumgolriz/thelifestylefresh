@@ -21,6 +21,7 @@ export const titles = {
   journal: "The Journal",
   request: "Write to the house",
   join: "I have an invitation",
+  refer: "Pass an invitation",
   shipping: "Where the correspondence ships",
   privacy: "Privacy",
   cookies: "Cookies",
@@ -37,6 +38,7 @@ export const descriptions = {
   journal: "Lifestyle, beauty, the table, and the house — from The Lifestyle Fresh journal.",
   request: `Write to the house. ${CAP_LINE} ${CONTINENTAL_LINE}`,
   join: "Your invitation is for you. Enter it and a continental U.S. address.",
+  refer: "Each envelope carries a few one-time invitations a member may pass to a friend.",
 } as const;
 
 export function jsonLdGraph() {

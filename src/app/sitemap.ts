@@ -33,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/house", 0.8],
     ["/membership", 0.8],
     ["/journal", 0.8],
+    ["/refer", 0.7],
     ["/join", 0.4],
     ["/faq", 0.7],
     ["/shipping", 0.4],

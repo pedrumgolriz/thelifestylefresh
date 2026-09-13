@@ -19,7 +19,7 @@ const columns = [
     links: [
       { href: "/request", label: "Write to the house" },
       { href: "/join", label: "I have an invitation" },
-      { href: "/account", label: "Your name" },
+      { href: "/refer", label: "Pass an invitation" },
       { href: "/login", label: "Member sign-in" },
     ],
   },
