@@ -30,7 +30,7 @@ export async function POST(request: Request) {
   const state = parsed.data.state.toUpperCase();
   if (!isContinentalState(state)) {
     return NextResponse.json(
-      { error: "Membership posts only to the continental United States, including D.C." },
+      { error: "Membership currently ships within the contiguous United States, including D.C." },
       { status: 400 },
     );
   }
@@ -115,7 +115,7 @@ export async function POST(request: Request) {
     custom_text: {
       shipping_address: {
         message:
-          "We post only within the continental United States (the lower 48 and Washington, D.C.). Alaska, Hawaii, territories, and international addresses cannot be fulfilled.",
+          "We currently ship within the contiguous United States (the lower 48 and Washington, D.C.). Alaska, Hawaii, territories, and international addresses cannot be fulfilled.",
       },
     },
     metadata: {

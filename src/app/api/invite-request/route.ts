@@ -10,6 +10,9 @@ const schema = z.object({
   city: z.string().min(2),
   state: z.string().min(2),
   note: z.string().min(8),
+  love: z.string().min(2),
+  special: z.string().min(8),
+  interests: z.string().min(2),
 });
 
 export async function POST(request: Request) {
@@ -19,7 +22,7 @@ export async function POST(request: Request) {
   }
   if (!isContinentalState(parsed.data.state)) {
     return NextResponse.json(
-      { error: "We only post within the continental United States." },
+      { error: "We currently ship within the contiguous United States." },
       { status: 400 },
     );
   }
@@ -33,7 +36,12 @@ export async function POST(request: Request) {
         email: parsed.data.email.toLowerCase(),
         city: parsed.data.city,
         state: parsed.data.state.toUpperCase(),
-        note: parsed.data.note,
+        note: [
+          parsed.data.note,
+          `Drawn to: ${parsed.data.interests}`,
+          `Loves: ${parsed.data.love}`,
+          `Mail: ${parsed.data.special}`,
+        ].join("\n\n"),
         status: waitlisted ? "waitlisted" : "pending",
       },
     });

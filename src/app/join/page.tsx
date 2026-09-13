@@ -26,8 +26,8 @@ export default async function JoinPage({
         <Ornament className="ink-draw mt-5 max-w-xs" />
         <h1 className="serif mt-6 text-5xl">Redeem your card.</h1>
         <p className="mt-5 text-lg leading-8 text-ink">
-          Your card is for you. Enter it and a continental address. Unused cards are taken
-          back.
+          Your invitation is for you. Enter it and a contiguous U.S. address. Unused
+          invitations are taken back.
         </p>
         {seats.atCapacity ? (
           <p className="mt-4 text-sm text-seal">

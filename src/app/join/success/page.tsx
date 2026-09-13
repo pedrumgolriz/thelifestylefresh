@@ -11,7 +11,7 @@ export default function JoinSuccessPage() {
       <Ornament className="mx-auto mt-5 max-w-xs" />
       <h1 className="serif mt-6 text-5xl tracking-[-0.04em]">A place has been set.</h1>
       <p className="mt-5 text-lg leading-8 text-ink-soft">
-        The first month is confirmed. The next envelope is assembled for a continental
+        The first month is confirmed. The correspondence will post to your contiguous
         United States address. Watch your inbox — and the house for the post.
       </p>
       <div className="mt-8 flex justify-center gap-3">
@@ -19,7 +19,7 @@ export default function JoinSuccessPage() {
           Membership
         </Link>
         <Link href="/the-box" className="btn btn-ghost">
-          The Envelope
+          What’s inside
         </Link>
       </div>
     </div>

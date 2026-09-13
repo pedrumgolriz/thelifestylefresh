@@ -614,6 +614,32 @@ a {
   }
 }
 
+.season-winter {
+  background: linear-gradient(160deg, #7a1d24 0%, #c9a24a 100%);
+}
+.season-spring {
+  background: linear-gradient(160deg, #b7c9d8 0%, #c5c7cc 100%);
+}
+.season-summer {
+  background: linear-gradient(160deg, #fbf7ee 0%, #d4c08a 100%);
+}
+.season-autumn {
+  background: linear-gradient(160deg, #e8c4d0 0%, #c9a24a 100%);
+}
+
+.product-frame {
+  overflow: hidden;
+  border: 1px solid var(--gold);
+  box-shadow: var(--shadow);
+  background: var(--paper-lift);
+}
+
+.product-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

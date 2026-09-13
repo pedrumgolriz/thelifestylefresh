@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
+import { invitationCta } from "@/lib/house";
 import { getMembershipSnapshot } from "@/lib/membership";
 import { Mark } from "./mark";
 import { NavLinks } from "./nav-links";
@@ -9,14 +10,15 @@ export async function SiteHeader() {
   const seats = await getMembershipSnapshot();
 
   const links = [
-    { href: "/the-box", label: "The Envelope" },
-    { href: "/journal", label: "Journal" },
+    { href: "/the-box", label: "The Correspondence" },
+    { href: "/journal", label: "The Journal" },
     { href: "/about", label: "The House" },
-    session?.role === "ADMIN"
-      ? { href: "/admin", label: "The desk" }
+    { href: "/request", label: "Request an Invitation" },
+    ...(session?.role === "ADMIN"
+      ? [{ href: "/admin", label: "The desk" }]
       : session
-        ? { href: "/account", label: "Membership" }
-        : { href: "/login", label: "Members" },
+        ? [{ href: "/account", label: "Membership" }]
+        : []),
   ];
 
   return (
@@ -31,7 +33,7 @@ export async function SiteHeader() {
             </span>
           </Link>
           <Link href="/request" className="btn btn-ink">
-            {seats.atCapacity ? "Leave a name" : "Ask to be considered"}
+            {invitationCta(seats.atCapacity)}
           </Link>
         </div>
         <NavLinks

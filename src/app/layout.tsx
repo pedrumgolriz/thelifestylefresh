@@ -4,7 +4,7 @@ import { CookieBanner } from "@/components/cookie-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SkipLink } from "@/components/skip-link";
-import { jsonLdGraph, SITE } from "@/lib/seo";
+import { jsonLdGraph, SITE, titles } from "@/lib/seo";
 import "./globals.css";
 
 const display = Fraunces({
@@ -30,7 +30,7 @@ const script = Mrs_Saint_Delafield({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://thelifestylefresh.com"),
   title: {
-    default: "The Lifestyle Fresh — The list is nearly closed",
+    default: titles.home,
     template: "%s — The Lifestyle Fresh",
   },
   description: SITE.description,
@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: SITE.name,
-    title: "The Lifestyle Fresh — The list is nearly closed",
-    description: "A sealed envelope each month. By card only. The continent.",
+    title: titles.home,
+    description: SITE.description,
     url: SITE.url,
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Lifestyle Fresh — The list is nearly closed",
-    description: "A sealed envelope each month. By card only. The continent.",
+    title: titles.home,
+    description: SITE.description,
   },
   robots: { index: true, follow: true },
 };

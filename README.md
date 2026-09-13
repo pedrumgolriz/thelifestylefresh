@@ -1,6 +1,6 @@
 # The Lifestyle Fresh
 
-Invite-only monthly correspondence. $19.99 a month. Continental United States only.
+Invite-only monthly correspondence. $34.99 a month. Contiguous United States only.
 
 The site is a Next.js house with a journal, request list, Stripe Checkout, and an admin desk on Postgres.
 
@@ -26,7 +26,7 @@ We post only to the contiguous 48 states and Washington, D.C. Alaska, Hawaii, te
 
 1. Create a project and attach a Postgres plugin.
 2. Set the variables from `.env.example`.
-3. In Stripe, create a recurring Price for **$19.99 / month**.
+3. In Stripe, create a recurring Price for **$34.99 / month**.
 4. Add a webhook to `https://<your-domain>/api/webhooks/stripe` for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`.
 5. Deploy. The start command runs migrations and an idempotent seed.
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/db";
+import { shelfLabel } from "@/lib/house";
 import { journalPostBySlug } from "@/lib/journal-posts";
 import { renderMarkdown } from "@/lib/markdown";
 
@@ -51,7 +52,7 @@ export default async function JournalPostPage({
       <Link href="/journal" className="eyebrow">
         Journal
       </Link>
-      <p className="mt-6 eyebrow">{post.category}</p>
+      <p className="mt-6 eyebrow">{shelfLabel(post.category)}</p>
       <h1 className="serif mt-3 text-5xl tracking-[-0.045em]">{post.title}</h1>
       <p className="mt-5 text-lg leading-8 text-ink-soft">{post.excerpt}</p>
       <div className={`mt-8 h-48 cover-${post.coverTone}`} aria-hidden="true" />

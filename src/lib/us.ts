@@ -67,5 +67,7 @@ export function isContinentalState(code: string) {
   return CONTINENTAL_STATE_CODES.includes(code.toUpperCase() as (typeof CONTINENTAL_STATE_CODES)[number]);
 }
 
+export const SHIPPING_SHORT = "Currently shipping within the contiguous United States.";
+
 export const SHIPPING_COPY =
-  "We currently post only within the continental United States, including Washington, D.C. We cannot deliver to Alaska, Hawaii, U.S. territories, military addresses, or international destinations.";
+  "Currently available throughout the contiguous United States, including Washington, D.C. Alaska, Hawaii, U.S. territories, military addresses, and international destinations are listed on the shipping page.";

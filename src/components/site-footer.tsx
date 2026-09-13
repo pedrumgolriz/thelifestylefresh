@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { PRICE_LINE } from "@/lib/house";
+import { SHIPPING_SHORT } from "@/lib/us";
 import { Mark } from "./mark";
 import { NewsletterForm } from "./newsletter-form";
 import { Ornament } from "./ornament";
@@ -7,28 +9,30 @@ const columns = [
   {
     title: "House",
     links: [
-      { href: "/the-box", label: "The Envelope" },
-      { href: "/journal", label: "Journal" },
+      { href: "/the-box", label: "The Correspondence" },
+      { href: "/journal", label: "The Journal" },
       { href: "/about", label: "The House" },
-      { href: "/request", label: "Request an invitation" },
+      { href: "/request", label: "Request an Invitation" },
+      { href: "/join", label: "I have an invitation" },
     ],
   },
   {
     title: "Journal",
     links: [
       { href: "/journal?category=Lifestyle", label: "Lifestyle" },
-      { href: "/journal?category=Wellness", label: "Wellness" },
-      { href: "/journal?category=Recipes", label: "Recipes" },
       { href: "/journal?category=Beauty", label: "Beauty" },
+      { href: "/journal?category=Recipes", label: "Table" },
+      { href: "/journal?category=Journal", label: "House" },
     ],
   },
   {
     title: "Notes",
     links: [
-      { href: "/shipping", label: "The post" },
+      { href: "/faq", label: "Questions" },
+      { href: "/shipping", label: "Shipping" },
       { href: "/privacy", label: "Privacy" },
-      { href: "/cookies", label: "Cookies" },
       { href: "/terms", label: "Terms" },
+      { href: "/login", label: "Member sign-in" },
     ],
   },
 ];
@@ -49,7 +53,7 @@ export function SiteFooter() {
             </div>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-6 text-ink-soft">
-            A sealed envelope, once a month. The list is nearly closed. The continent only.
+            A monthly correspondence. {PRICE_LINE}. {SHIPPING_SHORT}
           </p>
           <p className="mt-6 text-sm">
             <a className="underline" href="mailto:hello@thelifestylefresh.com">
@@ -86,7 +90,7 @@ export function SiteFooter() {
       <div className="border-t border-[var(--rule)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm text-ink-soft sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} The Lifestyle Fresh. All rights reserved.</p>
-          <p>Posted from the continental United States.</p>
+          <p>{SHIPPING_SHORT}</p>
         </div>
       </div>
     </footer>

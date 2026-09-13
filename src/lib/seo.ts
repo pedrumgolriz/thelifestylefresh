@@ -1,34 +1,35 @@
+import { MEMBERSHIP_PRICE_LABEL } from "./catalog";
+import { APPLICATIONS_OPEN, FIRST_CORRESPONDENCE, PRODUCT_SENTENCE } from "./house";
+
 export const SITE = {
   name: "The Lifestyle Fresh",
   url: (process.env.NEXT_PUBLIC_APP_URL || "https://thelifestylefresh.com").replace(/\/$/, ""),
   email: "hello@thelifestylefresh.com",
-  description:
-    "A letter and a little for the table, posted once a month. By card only. The continent. We are not taking many more.",
+  description: `${PRODUCT_SENTENCE} ${MEMBERSHIP_PRICE_LABEL}/month, shipping included. Applications open ${APPLICATIONS_OPEN}. First correspondence ${FIRST_CORRESPONDENCE}.`,
 } as const;
 
 export const titles = {
-  home: "The Lifestyle Fresh — The list is nearly closed",
+  home: "The Lifestyle Fresh — A little luxury, delivered by post",
   about: "The house behind the monthly correspondence",
-  envelope: "What’s enclosed in the monthly envelope",
-  journal: "Letters from the journal",
-  request: "Ask to be considered for the correspondence",
-  join: "Redeem your card",
-  shipping: "Where the monthly envelope posts",
-  privacy: "Privacy for the private list",
-  cookies: "Cookies used by the house",
-  terms: "Terms of membership and invitation",
+  envelope: "What’s inside the monthly correspondence",
+  journal: "The Journal",
+  request: "Request an invitation",
+  join: "Redeem your invitation",
+  shipping: "Where the correspondence ships",
+  privacy: "Privacy",
+  cookies: "Cookies",
+  terms: "Terms of membership",
 } as const;
 
 export const descriptions = {
   home: SITE.description,
   about:
-    "The Lifestyle Fresh posts a letter each month to names it already keeps. By card only. Continental United States.",
+    "Established in 2019 as an editorial project; now a physical monthly correspondence. Made by hand. Sent by post.",
   envelope:
-    "What the month is permitted: a letter, a place setting, then an edited handful. Never the whole house.",
-  journal: "Published letters on paper and the month — from The Lifestyle Fresh journal.",
-  request:
-    "Write once. Name, city, why you still wait for the post. We decline more than we ask. The continent only.",
-  join: "Your card is for you. Enter it and a continental address.",
+    "A letter, always. Then paper, a little luxury, a delight, and something that asks you to send onward.",
+  journal: "Lifestyle, beauty, the table, and the house — from The Lifestyle Fresh journal.",
+  request: `Applications open ${APPLICATIONS_OPEN}. Tell us why the post still matters.`,
+  join: "Your invitation is for you. Enter it and a contiguous U.S. address.",
 } as const;
 
 export function jsonLdGraph() {
@@ -53,9 +54,11 @@ export function jsonLdGraph() {
       {
         "@type": "Offer",
         name: "Monthly correspondence",
-        availability: "https://schema.org/LimitedAvailability",
+        price: "34.99",
+        priceCurrency: "USD",
+        availability: "https://schema.org/PreOrder",
         eligibleRegion: { "@type": "Country", name: "US" },
-        description: "A sealed envelope each month. By card. Continental United States.",
+        description: SITE.description,
         url: `${SITE.url}/request`,
       },
     ],

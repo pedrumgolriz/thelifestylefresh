@@ -111,6 +111,6 @@ export const CATALOG: CatalogEntry[] = [
   { slug: "bookmark", name: "A place held", category: "Fun", monthly: false, featured: false, description: "Ribbon, paper, or something that waits in a book." },
 ];
 
-export const MEMBERSHIP_PRICE = 19.99;
-export const MEMBERSHIP_PRICE_LABEL = "$19.99";
+export const MEMBERSHIP_PRICE = 34.99;
+export const MEMBERSHIP_PRICE_LABEL = "$34.99";
 export const MEMBERSHIP_CADENCE = "a month";

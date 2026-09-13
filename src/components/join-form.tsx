@@ -92,7 +92,7 @@ export function JoinForm({ initialCode = "" }: { initialCode?: string }) {
           <FieldLabel required>State</FieldLabel>
           <select className="field" name="state" required defaultValue="">
             <option value="" disabled>
-              Select a continental state
+              Contiguous U.S. only
             </option>
             {CONTINENTAL_STATES.map((state) => (
               <option key={state.code} value={state.code}>

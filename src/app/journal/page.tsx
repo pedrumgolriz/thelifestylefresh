@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/db";
+import { JOURNAL_SHELVES, shelfLabel } from "@/lib/house";
 import { publishedJournalPosts } from "@/lib/journal-posts";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Journal",
-  description: "Lifestyle, wellness, recipes, and beauty from The Lifestyle Fresh.",
+  description: "Lifestyle, beauty, the table, and the house — from The Lifestyle Fresh journal.",
 };
 
-const categories = ["Lifestyle", "Wellness", "Recipes", "Beauty", "Journal"];
+const categories = JOURNAL_SHELVES.map((shelf) => shelf.key);
 
 export default async function JournalPage({
   searchParams,
@@ -52,7 +53,7 @@ export default async function JournalPage({
   return (
     <div className="mx-auto max-w-6xl px-5 pb-24 pt-16">
       <p className="script text-4xl">The journal</p>
-      <h1 className="serif mt-4 text-5xl tracking-[-0.04em] sm:text-6xl">Letters, published.</h1>
+      <h1 className="serif mt-4 text-5xl tracking-[-0.04em] sm:text-6xl">A magazine you can keep.</h1>
       <nav className="mt-8 flex flex-wrap gap-2" aria-label="Journal categories">
         <Link
           href="/journal"
@@ -68,7 +69,7 @@ export default async function JournalPage({
             className={`btn ${selected === item ? "btn-ink" : "btn-ghost"}`}
             aria-current={selected === item ? "page" : undefined}
           >
-            {item}
+            {shelfLabel(item)}
           </Link>
         ))}
       </nav>
@@ -81,7 +82,7 @@ export default async function JournalPage({
           >
             <div className={`h-40 cover-${post.coverTone}`} aria-hidden="true" />
             <div className="p-6">
-              <p className="eyebrow">{post.category}</p>
+              <p className="eyebrow">{shelfLabel(post.category)}</p>
               <h2 className="serif mt-2 text-3xl tracking-[-0.03em]">{post.title}</h2>
               <p className="mt-2 text-sm leading-6 text-ink-soft">{post.excerpt}</p>
             </div>

@@ -37,8 +37,8 @@ export default async function AccountPage() {
         </form>
       </div>
       <p className="mt-6 text-sm text-ink-soft">
-        Shipping is continental US only. Update the address in Stripe if you move within
-        the lower forty-eight or D.C.{" "}
+        Shipping is within the contiguous United States. Update the address in Stripe if
+        you move within the lower forty-eight or D.C.{" "}
         <Link href="/shipping" className="underline">
           Shipping note
         </Link>
