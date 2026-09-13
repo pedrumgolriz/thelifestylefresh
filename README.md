@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Lifestyle Fresh
 
-## Getting Started
+Invite-only monthly correspondence. $19.99 a month. Continental United States only.
 
-First, run the development server:
+The site is a Next.js house with a journal, request list, Stripe Checkout, and an admin desk on Postgres.
+
+## Local
 
 ```bash
+cp .env.example .env
+docker compose up -d
+npx prisma migrate deploy
+npx prisma db seed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Admin desk: `/login` with `ADMIN_EMAIL` / `ADMIN_PASSWORD`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Founding invite code: `FRESH-FOUNDING`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Shipping rule
 
-## Learn More
+We post only to the contiguous 48 states and Washington, D.C. Alaska, Hawaii, territories, military addresses, and international destinations are rejected in the request form, the join form, and Stripe Checkout copy.
 
-To learn more about Next.js, take a look at the following resources:
+## Railway
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a project and attach a Postgres plugin.
+2. Set the variables from `.env.example`.
+3. In Stripe, create a recurring Price for **$19.99 / month**.
+4. Add a webhook to `https://<your-domain>/api/webhooks/stripe` for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`.
+5. Deploy. The start command runs migrations and an idempotent seed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Stripe notes
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Checkout is `subscription` mode.
+- `shipping_address_collection.allowed_countries` is `US` only.
+- Fulfillment address of record is the continental-US form the member submits before Checkout.

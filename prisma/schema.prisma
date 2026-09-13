@@ -1,0 +1,130 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+}
+
+model User {
+  id             String        @id @default(cuid())
+  email          String        @unique
+  passwordHash   String?
+  name           String?
+  role           Role          @default(MEMBER)
+  addressLine1   String?
+  addressLine2   String?
+  city           String?
+  state          String?
+  postalCode     String?
+  country        String        @default("US")
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  subscription   Subscription?
+  redeemedInvite Invite?
+}
+
+model Invite {
+  id           String    @id @default(cuid())
+  code         String    @unique
+  email        String?
+  note         String?
+  maxUses      Int       @default(1)
+  usedCount    Int       @default(0)
+  expiresAt    DateTime?
+  createdAt    DateTime  @default(now())
+  redeemedById String?   @unique
+  redeemedBy   User?     @relation(fields: [redeemedById], references: [id])
+}
+
+model Subscription {
+  id                   String    @id @default(cuid())
+  userId               String    @unique
+  user                 User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?   @unique
+  stripePriceId        String?
+  status               String    @default("incomplete")
+  currentPeriodEnd     DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+}
+
+model Post {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String
+  content     String
+  category    String
+  coverTone   String    @default("paper")
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  authorName  String    @default("The Lifestyle Fresh")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model NewsletterSignup {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  source    String?
+  createdAt DateTime @default(now())
+}
+
+model InviteRequest {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  city      String?
+  state     String?
+  note      String?
+  status    String   @default("pending")
+  createdAt DateTime @default(now())
+}
+
+model HouseConfig {
+  id        String   @id @default("house")
+  memberCap Int      @default(40)
+  updatedAt DateTime @updatedAt
+}
+
+model Edition {
+  id        String        @id @default(cuid())
+  month     Int
+  year      Int
+  title     String
+  letter    String
+  published Boolean       @default(false)
+  items     EditionItem[]
+  createdAt DateTime      @default(now())
+
+  @@unique([month, year])
+}
+
+model EditionItem {
+  id          String  @id @default(cuid())
+  editionId   String
+  edition     Edition @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  category    String
+  name        String
+  description String?
+  sortOrder   Int     @default(0)
+}
+
+model CatalogItem {
+  id          String  @id @default(cuid())
+  slug        String  @unique
+  name        String
+  category    String
+  description String
+  monthly     Boolean @default(false)
+  featured    Boolean @default(false)
+  sortOrder   Int     @default(0)
+}
