@@ -1,7 +1,12 @@
 import { prisma } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminInvitesPage() {
-  const invites = await prisma.invite.findMany({ orderBy: { createdAt: "desc" } });
+  const invites = await prisma.invite.findMany({
+    orderBy: { createdAt: "desc" },
+    include: { issuedByEdition: true },
+  });
 
   return (
     <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -15,6 +20,10 @@ export default async function AdminInvitesPage() {
           <input className="field" name="maxUses" type="number" min={1} defaultValue={1} />
           <button className="btn btn-ink">Create invitation</button>
         </form>
+        <p className="mt-6 text-sm text-ink-soft">
+          Share codes (<span className="text-ink">LF-SHARE-…</span>) are generated in batches on the
+          Editions page.
+        </p>
       </div>
       <div className="divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
         {invites.map((invite) => (
@@ -24,6 +33,9 @@ export default async function AdminInvitesPage() {
               {invite.usedCount}/{invite.maxUses} used
               {invite.email ? ` · ${invite.email}` : ""}
               {invite.note ? ` · ${invite.note}` : ""}
+              {invite.issuedByEdition
+                ? ` · ${invite.issuedByEdition.month}/${invite.issuedByEdition.year}`
+                : ""}
             </p>
           </div>
         ))}

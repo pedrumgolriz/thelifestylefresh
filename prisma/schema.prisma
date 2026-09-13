@@ -31,16 +31,18 @@ model User {
 }
 
 model Invite {
-  id           String    @id @default(cuid())
-  code         String    @unique
-  email        String?
-  note         String?
-  maxUses      Int       @default(1)
-  usedCount    Int       @default(0)
-  expiresAt    DateTime?
-  createdAt    DateTime  @default(now())
-  redeemedById String?   @unique
-  redeemedBy   User?     @relation(fields: [redeemedById], references: [id])
+  id                String    @id @default(cuid())
+  code              String    @unique
+  email             String?
+  note              String?
+  maxUses           Int       @default(1)
+  usedCount         Int       @default(0)
+  expiresAt         DateTime?
+  createdAt         DateTime  @default(now())
+  redeemedById      String?   @unique
+  redeemedBy        User?     @relation(fields: [redeemedById], references: [id])
+  issuedByEditionId String?
+  issuedByEdition   Edition? @relation("EditionInvites", fields: [issuedByEditionId], references: [id], onDelete: SetNull)
 }
 
 model Subscription {
@@ -103,6 +105,7 @@ model Edition {
   letter    String
   published Boolean       @default(false)
   items     EditionItem[]
+  invites   Invite[]     @relation("EditionInvites")
   createdAt DateTime      @default(now())
 
   @@unique([month, year])
