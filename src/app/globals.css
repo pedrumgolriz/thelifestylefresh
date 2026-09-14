@@ -382,7 +382,7 @@ a {
 }
 .cover-ink {
   --season-angle: 165deg;
-  background: linear-gradient(var(--season-angle), #4a463e 0%, #24231f 100%);
+  background: linear-gradient(var(--season-angle), #4A4623 0%, #24231f 100%);
   animation: season-breathe 25s ease-in-out infinite alternate;
   animation-delay: -12s;
 }
