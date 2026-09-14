@@ -1,10 +1,25 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const categories = ["Lifestyle", "Wellness", "Recipes", "Beauty", "Journal"];
-const tones = ["paper", "seal", "blush", "sage", "ink"];
+const tones: { value: string; label: string }[] = [
+  { value: "paper", label: "Paper" },
+  { value: "brass", label: "Brass" },
+  { value: "seal", label: "Seal" },
+  { value: "blush", label: "Blush" },
+  { value: "sage", label: "Sage" },
+  { value: "teal", label: "Teal" },
+  { value: "slate", label: "Slate" },
+  { value: "ink", label: "Ink" },
+  { value: "oxblood", label: "Oxblood" },
+  { value: "copper", label: "Copper" },
+  { value: "winter", label: "Cinnamon & amber" },
+  { value: "spring", label: "Lilac & vanilla" },
+  { value: "summer", label: "Apricot & honey" },
+  { value: "autumn", label: "Saffron & plum" },
+];
 
 type PostValues = {
   id?: string;
@@ -16,6 +31,57 @@ type PostValues = {
   coverTone?: string;
   published?: boolean;
 };
+
+function CoverTonePicker({ defaultValue }: { defaultValue?: string }) {
+  const [value, setValue] = useState(defaultValue || "paper");
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const current = tones.find((t) => t.value === value) ?? tones[0];
+
+  useEffect(() => {
+    function onDocClick(event: MouseEvent) {
+      if (ref.current && !ref.current.contains(event.target as Node)) setOpen(false);
+    }
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        className="field flex items-center justify-between"
+        onClick={() => setOpen((o) => !o)}
+        aria-label={`Cover tone: ${current.label}`}
+        aria-expanded={open}
+      >
+        <span className={`cover-${value} h-6 w-24 rounded-[1px]`} />
+        <span className="eyebrow">{current.label}</span>
+      </button>
+      {open ? (
+        <div className="absolute z-20 mt-2 grid w-full grid-cols-3 gap-2 border border-[var(--rule)] bg-[var(--paper-lift)] p-2 sm:grid-cols-5">
+          {tones.map((t) => (
+            <button
+              key={t.value}
+              type="button"
+              title={t.label}
+              onClick={() => {
+                setValue(t.value);
+                setOpen(false);
+              }}
+              aria-label={t.label}
+              aria-pressed={t.value === value}
+              className={`cover-${t.value} h-12 w-full rounded-[1px] ${
+                t.value === value ? "ring-2 ring-[var(--ink)]" : "ring-1 ring-[var(--rule)]"
+              }`}
+            />
+          ))}
+        </div>
+      ) : null}
+      <input type="hidden" name="coverTone" value={value} />
+    </div>
+  );
+}
 
 export function PostForm({ post }: { post?: PostValues }) {
   const router = useRouter();
@@ -58,11 +124,7 @@ export function PostForm({ post }: { post?: PostValues }) {
             <option key={category}>{category}</option>
           ))}
         </select>
-        <select className="field" name="coverTone" defaultValue={post?.coverTone || "paper"}>
-          {tones.map((tone) => (
-            <option key={tone}>{tone}</option>
-          ))}
-        </select>
+        <CoverTonePicker defaultValue={post?.coverTone} />
       </div>
       <textarea
         className="field min-h-72"

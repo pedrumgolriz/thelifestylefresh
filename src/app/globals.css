@@ -410,6 +410,24 @@ a {
   animation: season-breathe 23s ease-in-out infinite alternate;
   animation-delay: -24s;
 }
+.cover-slate {
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #c8d2dc 0%, #4a5560 100%);
+  animation: season-breathe 25s ease-in-out infinite alternate;
+  animation-delay: -27s;
+}
+.cover-teal {
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #cfe0dc 0%, #2f5d5a 100%);
+  animation: season-breathe 22s ease-in-out infinite alternate;
+  animation-delay: -30s;
+}
+.cover-copper {
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #e8c4a0 0%, #8a4a2a 100%);
+  animation: season-breathe 26s ease-in-out infinite alternate;
+  animation-delay: -33s;
+}
 
 .envelope {
   position: relative;
@@ -751,24 +769,28 @@ a {
   }
 }
 
-.season-winter {
+.season-winter,
+.cover-winter {
   --season-angle: 165deg;
   background: linear-gradient(var(--season-angle), #3d241e 0%, #a67c3a 100%);
   animation: season-breathe 22s ease-in-out infinite alternate;
 }
-.season-spring {
+.season-spring,
+.cover-spring {
   --season-angle: 165deg;
   background: linear-gradient(var(--season-angle), #d9c7dc 0%, #f3e9d4 100%);
   animation: season-breathe 26s ease-in-out infinite alternate;
   animation-delay: -4s;
 }
-.season-summer {
+.season-summer,
+.cover-summer {
   --season-angle: 165deg;
   background: linear-gradient(var(--season-angle), #e8a87c 0%, #d4a24c 100%);
   animation: season-breathe 24s ease-in-out infinite alternate;
   animation-delay: -8s;
 }
-.season-autumn {
+.season-autumn,
+.cover-autumn {
   --season-angle: 165deg;
   background: linear-gradient(var(--season-angle), #ef9a2b 0%, #3a2238 100%);
   animation: season-breathe 20s ease-in-out infinite alternate;
@@ -808,6 +830,10 @@ a {
   .season-spring,
   .season-summer,
   .season-autumn,
+  .cover-winter,
+  .cover-spring,
+  .cover-summer,
+  .cover-autumn,
   .cover-paper,
   .cover-seal,
   .cover-blush,
@@ -817,6 +843,9 @@ a {
   .cover-hydrangea,
   .cover-oxblood,
   .cover-brass,
+  .cover-slate,
+  .cover-teal,
+  .cover-copper,
   .ink-write,
   .ink-draw path,
   .ink-draw circle,
