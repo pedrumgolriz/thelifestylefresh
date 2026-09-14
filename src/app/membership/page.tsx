@@ -33,7 +33,7 @@ export default async function MembershipPage() {
 
   return (
     <div className="reveal-page mx-auto max-w-3xl px-5 pb-24 pt-20">
-      <p className="script text-4xl sm:text-5xl">Membership</p>
+      <p className="script text-2xl">Membership</p>
       <h1 className="serif mt-5 text-5xl sm:text-6xl">A small correspondence circle.</h1>
       <p className="mt-7 max-w-xl text-lg leading-8 text-ink">
         Membership is by invitation. {capLine(seats.cap)} When a place opens, the house writes.

@@ -24,7 +24,7 @@ export default async function EnvelopePage() {
     <div className="reveal-page mx-auto max-w-6xl px-5 pb-24 pt-20">
       <div className="reveal-invite grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
         <div>
-          <p className="script text-4xl sm:text-5xl">The envelope</p>
+          <p className="script text-2xl">The envelope</p>
           <h1 className="serif mt-5 max-w-3xl text-5xl leading-[0.98] sm:text-6xl">
             Correspondence, sealed.
           </h1>
@@ -46,7 +46,7 @@ export default async function EnvelopePage() {
       </div>
 
       <section className="pt-28" aria-labelledby="character-heading">
-        <p className="script text-4xl sm:text-5xl">The character</p>
+        <p className="script text-2xl">The character</p>
         <h2 id="character-heading" className="serif mt-4 max-w-2xl text-4xl sm:text-5xl">
           Every month begins with a letter.
         </h2>
@@ -65,7 +65,7 @@ export default async function EnvelopePage() {
       </section>
 
       <section className="pt-28" aria-labelledby="year-heading">
-        <p className="script text-4xl sm:text-5xl">Through the year</p>
+        <p className="script text-2xl">Through the year</p>
         <h2 id="year-heading" className="serif mt-4 max-w-2xl text-4xl sm:text-5xl">
           The envelope changes with the seasons.
         </h2>
@@ -84,7 +84,7 @@ export default async function EnvelopePage() {
       </section>
 
       <section className="pt-28" aria-labelledby="post-heading">
-        <p className="script text-4xl sm:text-5xl">The post</p>
+        <p className="script text-2xl">The post</p>
         <h2 id="post-heading" className="serif mt-4 max-w-2xl text-4xl">
           {SHIPPING_SHORT}
         </h2>

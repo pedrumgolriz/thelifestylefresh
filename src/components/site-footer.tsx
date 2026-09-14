@@ -75,7 +75,7 @@ export function SiteFooter() {
       <div className="border-t border-[var(--rule)]">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="script text-3xl sm:text-4xl">A note, digitally</p>
+            <p className="script text-2xl">A note, digitally</p>
             <p className="mt-2 max-w-md text-sm text-ink-soft">
               Occasional letters from the house. Never daily.
             </p>

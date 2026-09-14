@@ -96,7 +96,7 @@ export default async function HomePage() {
       {/* Hero — the envelope is the visual hero. */}
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-10 pt-16 sm:pt-20 lg:grid-cols-[1.05fr_0.95fr]">
         <div className="reveal-invite">
-          <p className="script ink-write text-4xl sm:text-5xl">
+          <p className="script ink-write text-2xl">
             {closed ? "The first table is full" : "The first table is forming"}
           </p>
           <Ornament className="ink-draw mt-5 max-w-xs" />
@@ -133,7 +133,7 @@ export default async function HomePage() {
       <section className="mx-auto max-w-6xl px-5 pt-20" aria-labelledby="house-heading">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
-            <p className="script text-4xl sm:text-5xl">The house</p>
+            <p className="script text-2xl">The house</p>
             <h2 id="house-heading" className="serif mt-4 max-w-2xl text-4xl sm:text-5xl">
               {capLine(seats.cap)}
             </h2>
@@ -158,7 +158,7 @@ export default async function HomePage() {
 
       {/* The character of the envelope — categories, not an inventory. */}
       <section className="mx-auto max-w-6xl px-5 pt-28" aria-labelledby="envelope-heading">
-        <p className="script text-4xl sm:text-5xl">The envelope</p>
+        <p className="script text-2xl">The envelope</p>
         <h2 id="envelope-heading" className="serif mt-4 max-w-2xl text-4xl sm:text-5xl">
           Edited. Never the whole table.
         </h2>
@@ -181,7 +181,7 @@ export default async function HomePage() {
         <section className="mx-auto max-w-6xl px-5 pt-28" aria-labelledby="archive-heading">
           <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="script text-4xl sm:text-5xl">From the archive</p>
+            <p className="script text-2xl">From the archive</p>
             <h2 id="archive-heading" className="serif mt-4 text-4xl sm:text-5xl">
               Previous envelopes
             </h2>
@@ -217,7 +217,7 @@ export default async function HomePage() {
         <section className="mx-auto max-w-6xl px-5 pt-28" aria-labelledby="journal-heading">
           <div className="flex items-end justify-between gap-4">
             <div>
-              <p className="script text-4xl sm:text-5xl">The journal</p>
+              <p className="script text-2xl">The journal</p>
               <h2 id="journal-heading" className="serif mt-4 text-4xl sm:text-5xl">
                 From the house
               </h2>

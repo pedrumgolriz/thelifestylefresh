@@ -31,7 +31,7 @@ export default async function HousePage() {
 
   return (
     <div className="reveal-page mx-auto max-w-3xl px-5 pb-24 pt-20">
-      <p className="script text-4xl sm:text-5xl">The house</p>
+      <p className="script text-2xl">The house</p>
       <h1 className="serif mt-5 text-5xl sm:text-6xl">A small correspondence house.</h1>
       <p className="mt-7 max-w-xl text-lg leading-8 text-ink">
         Established in 2019 as an editorial project, now a physical correspondence. The

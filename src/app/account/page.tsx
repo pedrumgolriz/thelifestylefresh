@@ -17,7 +17,7 @@ export default async function AccountPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 pb-24 pt-20">
-      <p className="script text-4xl sm:text-5xl">Your name</p>
+      <p className="script text-2xl">Your name</p>
       <h1 className="serif mt-5 text-5xl tracking-[-0.02em]">Your place at the table.</h1>
       <div className="invite-card mt-8 p-7">
         <p className="serif text-2xl">{user?.name || user?.email}</p>

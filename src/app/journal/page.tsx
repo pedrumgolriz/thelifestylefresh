@@ -55,7 +55,7 @@ export default async function JournalPage({
 
   return (
     <div className="mx-auto max-w-6xl px-5 pb-24 pt-20">
-      <p className="script text-4xl sm:text-5xl">The journal</p>
+      <p className="script text-2xl">The journal</p>
       <h1 className="serif mt-5 text-5xl tracking-[-0.02em] sm:text-6xl">
         A magazine you can keep.
       </h1>

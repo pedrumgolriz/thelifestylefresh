@@ -22,7 +22,7 @@ export default async function RequestPage() {
   return (
     <div className="reveal-page mx-auto grid max-w-5xl gap-16 px-5 pb-24 pt-20 lg:grid-cols-[0.95fr_1.05fr]">
       <div>
-        <p className="script text-4xl sm:text-5xl">Write to the house</p>
+        <p className="script text-2xl">Write to the house</p>
         <h1 className="serif mt-5 text-5xl sm:text-6xl">
           {seats.atCapacity ? "The table is full." : "Request an invitation."}
         </h1>

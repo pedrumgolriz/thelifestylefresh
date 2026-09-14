@@ -45,7 +45,7 @@ export default async function ReferPage() {
 
   return (
     <div className="reveal-page mx-auto max-w-3xl px-5 pb-24 pt-20">
-      <p className="script text-4xl sm:text-5xl">Pass an invitation</p>
+      <p className="script text-2xl">Pass an invitation</p>
       <h1 className="serif mt-5 text-5xl sm:text-6xl">A code, slipped into a letter.</h1>
       <p className="mt-7 max-w-xl text-lg leading-8 text-ink">
         Membership is by invitation, and the house trusts its members to choose the next names.

@@ -38,7 +38,7 @@ export function JoinForm({ initialCode = "" }: { initialCode?: string }) {
   if (status === "waitlisted") {
     return (
       <div className="status-wax" role="status">
-        <p className="script text-3xl">You wait.</p>
+        <p className="script text-2xl">You wait.</p>
         <p className="mt-4 text-sm leading-6 text-ink">{message}</p>
       </div>
     );

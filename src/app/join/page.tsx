@@ -22,7 +22,7 @@ export default async function JoinPage({
   return (
     <div className="reveal-page mx-auto grid max-w-5xl gap-16 px-5 pb-24 pt-20 lg:grid-cols-[1fr_1fr]">
       <div>
-        <p className="script text-4xl sm:text-5xl">I have an invitation</p>
+        <p className="script text-2xl">I have an invitation</p>
         <h1 className="serif mt-5 text-5xl sm:text-6xl">Redeem your invitation.</h1>
         <p className="mt-7 max-w-md text-lg leading-8 text-ink">
           Your invitation is for you. Enter it and a continental U.S. address. Unused cards

@@ -59,7 +59,7 @@ export default async function FaqPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 pb-24 pt-20">
-      <p className="script text-4xl sm:text-5xl">Questions</p>
+      <p className="script text-2xl">Questions</p>
       <h1 className="serif mt-5 text-5xl sm:text-6xl">Asked, plainly.</h1>
       <dl className="mt-12 space-y-10">
         {questions.map((item) => (

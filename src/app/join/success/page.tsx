@@ -7,7 +7,7 @@ export const metadata: Metadata = { title: "You are in" };
 export default function JoinSuccessPage() {
   return (
     <div className="mx-auto max-w-2xl px-5 pb-24 pt-24 text-center">
-      <p className="script text-4xl">Welcome to the season</p>
+      <p className="script text-2xl">Welcome to the season</p>
       <Ornament className="mx-auto mt-5 max-w-xs" />
       <h1 className="serif mt-6 text-5xl tracking-[-0.04em]">A place has been set.</h1>
       <p className="mt-5 text-lg leading-8 text-ink-soft">
