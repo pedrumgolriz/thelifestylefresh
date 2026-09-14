@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Mrs_Saint_Delafield } from "next/font/google";
+import { Fraunces, Inter, Petit_Formal_Script } from "next/font/google";
 import { CookieBanner } from "@/components/cookie-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -22,7 +22,7 @@ const body = Inter({
   style: ["normal"],
 });
 
-const script = Mrs_Saint_Delafield({
+const script = Petit_Formal_Script({
   variable: "--font-script",
   subsets: ["latin"],
   weight: "400",
