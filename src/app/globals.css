@@ -358,31 +358,57 @@ a {
 }
 
 .cover-paper {
-  background: linear-gradient(165deg, #f5f0e7 0%, #e3d6bf 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #f5f0e7 0%, #e3d6bf 100%);
+  animation: season-breathe 24s ease-in-out infinite alternate;
 }
 .cover-seal {
-  background: linear-gradient(165deg, #d9c7dc 0%, #5f4f60 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #d9c7dc 0%, #5f4f60 100%);
+  animation: season-breathe 22s ease-in-out infinite alternate;
+  animation-delay: -3s;
 }
 .cover-blush {
-  background: linear-gradient(165deg, #efe4ec 0%, #b7a3c4 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #efe4ec 0%, #b7a3c4 100%);
+  animation: season-breathe 26s ease-in-out infinite alternate;
+  animation-delay: -6s;
 }
 .cover-sage {
-  background: linear-gradient(165deg, #dcdcc8 0%, #7c8367 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #dcdcc8 0%, #7c8367 100%);
+  animation: season-breathe 23s ease-in-out infinite alternate;
+  animation-delay: -9s;
 }
 .cover-ink {
-  background: linear-gradient(165deg, #4a463e 0%, #24231f 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #4a463e 0%, #24231f 100%);
+  animation: season-breathe 25s ease-in-out infinite alternate;
+  animation-delay: -12s;
 }
 .cover-wisteria {
-  background: linear-gradient(165deg, #e4d4ee 0%, #817080 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #e4d4ee 0%, #817080 100%);
+  animation: season-breathe 24s ease-in-out infinite alternate;
+  animation-delay: -15s;
 }
 .cover-hydrangea {
-  background: linear-gradient(165deg, #ddd2e6 0%, #5f4f60 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #ddd2e6 0%, #5f4f60 100%);
+  animation: season-breathe 22s ease-in-out infinite alternate;
+  animation-delay: -18s;
 }
 .cover-oxblood {
-  background: linear-gradient(165deg, #6e3a3d 0%, #3a1f21 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #6e3a3d 0%, #3a1f21 100%);
+  animation: season-breathe 26s ease-in-out infinite alternate;
+  animation-delay: -21s;
 }
 .cover-brass {
-  background: linear-gradient(165deg, #efe2c8 0%, #a58a55 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #efe2c8 0%, #a58a55 100%);
+  animation: season-breathe 23s ease-in-out infinite alternate;
+  animation-delay: -24s;
 }
 
 .envelope {
@@ -710,17 +736,43 @@ a {
   }
 }
 
+@property --season-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 165deg;
+}
+
+@keyframes season-breathe {
+  0% {
+    --season-angle: 145deg;
+  }
+  100% {
+    --season-angle: 174deg;
+  }
+}
+
 .season-winter {
-  background: linear-gradient(165deg, #6e3a3d 0%, #a58a55 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #3d241e 0%, #a67c3a 100%);
+  animation: season-breathe 22s ease-in-out infinite alternate;
 }
 .season-spring {
-  background: linear-gradient(165deg, #d9c7dc 0%, #817080 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #d9c7dc 0%, #f3e9d4 100%);
+  animation: season-breathe 26s ease-in-out infinite alternate;
+  animation-delay: -4s;
 }
 .season-summer {
-  background: linear-gradient(165deg, #fbf8f1 0%, #c9b48f 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #e8a87c 0%, #d4a24c 100%);
+  animation: season-breathe 24s ease-in-out infinite alternate;
+  animation-delay: -8s;
 }
 .season-autumn {
-  background: linear-gradient(165deg, #c9a48f 0%, #7c663f 100%);
+  --season-angle: 165deg;
+  background: linear-gradient(var(--season-angle), #ef9a2b 0%, #3a2238 100%);
+  animation: season-breathe 20s ease-in-out infinite alternate;
+  animation-delay: -12s;
 }
 
 .product-frame {
@@ -752,6 +804,19 @@ a {
   .reveal-invite > *,
   .invite-arrive,
   .mark-seal,
+  .season-winter,
+  .season-spring,
+  .season-summer,
+  .season-autumn,
+  .cover-paper,
+  .cover-seal,
+  .cover-blush,
+  .cover-sage,
+  .cover-ink,
+  .cover-wisteria,
+  .cover-hydrangea,
+  .cover-oxblood,
+  .cover-brass,
   .ink-write,
   .ink-draw path,
   .ink-draw circle,
