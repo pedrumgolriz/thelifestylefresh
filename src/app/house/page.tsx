@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { SeatMeter } from "@/components/seat-meter";
 import {
@@ -69,17 +68,6 @@ export default async function HousePage() {
           Explore the envelope
         </Link>
       </div>
-
-      <figure className="mt-16 flex flex-col items-center gap-3">
-        <Image
-          src="/crest-ivory.jpg"
-          alt="The seal of The Lifestyle Fresh: a wax-pressed crest bearing the house monogram."
-          width={256}
-          height={256}
-          className="crest mark-seal"
-        />
-        <figcaption className="eyebrow">The seal of the house</figcaption>
-      </figure>
     </div>
   );
 }

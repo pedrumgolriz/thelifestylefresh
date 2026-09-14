@@ -87,25 +87,25 @@ export const SEASONS = [
   {
     name: "Winter",
     months: "December–February",
-    colors: "Oxblood & brass",
+    colors: "Cinnamon & amber",
     tone: "winter",
   },
   {
     name: "Spring",
     months: "March–May",
-    colors: "Lilac & ivory",
+    colors: "Lilac & vanilla",
     tone: "spring",
   },
   {
     name: "Summer",
     months: "June–August",
-    colors: "Ivory & brass",
+    colors: "Apricot & honey",
     tone: "summer",
   },
   {
     name: "Autumn",
     months: "September–November",
-    colors: "Amber & ink",
+    colors: "Saffron & plum",
     tone: "autumn",
   },
 ] as const;

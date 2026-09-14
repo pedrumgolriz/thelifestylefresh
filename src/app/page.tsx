@@ -41,6 +41,8 @@ const MONTHS = [
   "December",
 ];
 
+const ROMAN = ["I", "II", "III", "IV", "V"];
+
 export default async function HomePage() {
   let posts: { slug: string; title: string; excerpt: string; category: string; coverTone: string }[] =
     [];
@@ -166,14 +168,20 @@ export default async function HomePage() {
           A sealed envelope, once a month. The exact contents are never announced in advance.
           That is part of the correspondence.
         </p>
-        <div className="mt-12 grid gap-px md:grid-cols-2">
-          {ENVELOPE_CATEGORIES.map((item) => (
-            <article key={item.title} className="stationery p-8">
-              <h3 className="serif text-3xl">{item.title}</h3>
-              <p className="mt-3 max-w-sm text-sm leading-6 text-ink-soft">{item.lede}</p>
-            </article>
+        <ol className="mt-12 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
+          {ENVELOPE_CATEGORIES.map((item, i) => (
+            <li
+              key={item.title}
+              className="grid gap-2 py-7 md:grid-cols-[3rem_1fr_1.3fr] md:items-baseline md:gap-8"
+            >
+              <span className="serif-italic text-lg text-brass">{ROMAN[i]}</span>
+              <h3 className="serif text-2xl sm:text-3xl">{item.title}</h3>
+              <p className="text-sm leading-6 text-ink-soft md:text-base md:leading-7">
+                {item.lede}
+              </p>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* From the archive — real previous envelopes (only when published editions exist). */}

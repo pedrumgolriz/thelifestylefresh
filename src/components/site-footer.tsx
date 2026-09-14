@@ -1,7 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { CONTINENTAL_LINE } from "@/lib/house";
 import { SHIPPING_SHORT } from "@/lib/us";
-import { Mark } from "./mark";
 import { NewsletterForm } from "./newsletter-form";
 
 const columns = [
@@ -39,25 +38,22 @@ export function SiteFooter() {
     <footer className="mt-32 border-t border-[var(--rule)]">
       <div className="mx-auto max-w-6xl px-5 pt-16 pb-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
-            <div className="flex items-center gap-3">
-              <Mark className="h-14 w-14" decorative={false} />
-              <div>
-                <p className="serif text-2xl tracking-[-0.02em]">The Lifestyle Fresh</p>
-                <p className="eyebrow mt-1">Established 2019</p>
-              </div>
-            </div>
-            <p className="mt-5 max-w-sm text-sm leading-6 text-ink-soft">
-              Correspondence from the house, once each month. {CONTINENTAL_LINE}
-            </p>
-            <p className="mt-5 text-sm">
+          <div className="flex flex-col items-center text-center">
+            <Image
+              src="/crest-ivory.jpg"
+              alt="The seal of The Lifestyle Fresh: a wax-pressed crest bearing the house monogram."
+              width={220}
+              height={220}
+              className="crest h-44 w-44 md:h-52 md:w-52"
+            />
+            <p className="mt-6 text-sm">
               <a className="link-quiet" href="mailto:hello@thelifestylefresh.com">
                 hello@thelifestylefresh.com
               </a>
             </p>
           </div>
           {columns.map((column) => (
-            <nav key={column.title} aria-label={column.title}>
+            <nav key={column.title} aria-label={column.title} className="flex flex-col justify-end">
               <p className="eyebrow">{column.title}</p>
               <ul className="mt-4 space-y-1 text-sm">
                 {column.links.map((link) => (
