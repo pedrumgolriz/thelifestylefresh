@@ -4,8 +4,6 @@ export const APPLICATIONS_OPEN = "October 12, 2026";
 export const FIRST_CORRESPONDENCE = "January 2027";
 export const FIRST_MAILING = "January 5, 2027";
 
-export const PRICE_LINE = `${MEMBERSHIP_PRICE_LABEL}/month · Postage included · 250 names at a time`;
-
 export const PRODUCT_SENTENCE =
   "A letter, a small pleasure, and something worth keeping — sent once a month to a very small circle of names.";
 
@@ -14,8 +12,22 @@ export const HERO_LABEL = "The Lifestyle Fresh";
 
 export const HOUSE_CAP = 250;
 
-export const CAP_LINE = "250 names. One envelope each month.";
-export const CAP_LINE_LONG = "The house keeps 250 names at a time.";
+// Cap-dependent copy. Use the functions with the live `seats.cap` on pages that
+// fetch the snapshot; the string constants below fall back to HOUSE_CAP for
+// static contexts (SEO metadata, JSON-LD) where the cap isn't known yet.
+export function capLine(cap: number = HOUSE_CAP) {
+  return `${cap} names. One envelope each month.`;
+}
+export function capLineLong(cap: number = HOUSE_CAP) {
+  return `The house keeps ${cap} names at a time.`;
+}
+export function priceLine(cap: number = HOUSE_CAP) {
+  return `${MEMBERSHIP_PRICE_LABEL}/month · Postage included · ${cap} names at a time`;
+}
+
+export const PRICE_LINE = priceLine();
+export const CAP_LINE = capLine();
+export const CAP_LINE_LONG = capLineLong();
 
 export const CONTINENTAL_LINE = "Posted from the continental United States.";
 

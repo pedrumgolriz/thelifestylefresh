@@ -3,19 +3,22 @@ import Link from "next/link";
 import { SeatMeter } from "@/components/seat-meter";
 import { MEMBERSHIP_PRICE_LABEL } from "@/lib/catalog";
 import {
-  CAP_LINE,
   CONTINENTAL_LINE,
   FIRST_CORRESPONDENCE,
+  capLine,
   invitationCta,
 } from "@/lib/house";
 import { getMembershipSnapshot } from "@/lib/membership";
-import { descriptions, titles } from "@/lib/seo";
+import { descriptionsFor, titles } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: titles.membership,
-  description: descriptions.membership,
-  alternates: { canonical: "/membership" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seats = await getMembershipSnapshot();
+  return {
+    title: titles.membership,
+    description: descriptionsFor(seats.cap).membership,
+    alternates: { canonical: "/membership" },
+  };
+}
 
 const experience = [
   "The monthly envelope, addressed to you by hand",
@@ -33,7 +36,7 @@ export default async function MembershipPage() {
       <p className="script text-4xl sm:text-5xl">Membership</p>
       <h1 className="serif mt-5 text-5xl sm:text-6xl">A small correspondence circle.</h1>
       <p className="mt-7 max-w-xl text-lg leading-8 text-ink">
-        Membership is by invitation. {CAP_LINE} When a place opens, the house writes.
+        Membership is by invitation. {capLine(seats.cap)} When a place opens, the house writes.
       </p>
 
       <div className="invite-card mt-10 p-8">

@@ -4,7 +4,8 @@ import { CookieBanner } from "@/components/cookie-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SkipLink } from "@/components/skip-link";
-import { jsonLdGraph, SITE, titles } from "@/lib/seo";
+import { getMembershipSnapshot } from "@/lib/membership";
+import { jsonLdGraph, SITE, siteDescription, titles } from "@/lib/seo";
 import "./globals.css";
 
 const display = Fraunces({
@@ -27,36 +28,41 @@ const script = Mrs_Saint_Delafield({
   weight: "400",
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://thelifestylefresh.com"),
-  title: {
-    default: titles.home,
-    template: "%s — The Lifestyle Fresh",
-  },
-  description: SITE.description,
-  applicationName: SITE.name,
-  alternates: { canonical: "/" },
-  icons: {
-    icon: "/monogram-ivory.png",
-    apple: "/monogram-ivory.png",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: SITE.name,
-    title: titles.home,
-    description: SITE.description,
-    url: SITE.url,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: titles.home,
-    description: SITE.description,
-  },
-  robots: { index: true, follow: true },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seats = await getMembershipSnapshot();
+  const description = siteDescription(seats.cap);
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://thelifestylefresh.com"),
+    title: {
+      default: titles.home,
+      template: "%s — The Lifestyle Fresh",
+    },
+    description,
+    applicationName: SITE.name,
+    alternates: { canonical: "/" },
+    icons: {
+      icon: "/monogram-ivory.png",
+      apple: "/monogram-ivory.png",
+    },
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      siteName: SITE.name,
+      title: titles.home,
+      description,
+      url: SITE.url,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: titles.home,
+      description,
+    },
+    robots: { index: true, follow: true },
+  };
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const seats = await getMembershipSnapshot();
   return (
     <html
       lang="en"
@@ -65,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph()) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGraph(seats.cap)) }}
         />
         <SkipLink />
         <div id="app-root" className="flex min-h-full flex-col">

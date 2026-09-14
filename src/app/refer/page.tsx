@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeatMeter } from "@/components/seat-meter";
 import {
-  CAP_LINE,
   CONTINENTAL_LINE,
   SHARE_CODES_PER_ENVELOPE,
   SHARE_CODE_PREFIX,
+  capLine,
   invitationCta,
 } from "@/lib/house";
 import { getMembershipSnapshot } from "@/lib/membership";
@@ -69,7 +69,7 @@ export default async function ReferPage() {
 
       <div className="invite-card mt-12 p-8">
         <p className="eyebrow">The house</p>
-        <p className="serif mt-3 text-2xl">{CAP_LINE}</p>
+        <p className="serif mt-3 text-2xl">{capLine(seats.cap)}</p>
         <p className="mt-2 text-sm leading-6 text-ink-soft">{CONTINENTAL_LINE}</p>
         <SeatMeter seats={seats} />
         <div className="mt-7 flex flex-wrap gap-4">

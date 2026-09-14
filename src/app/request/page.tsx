@@ -2,16 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { InviteRequestForm } from "@/components/invite-request-form";
 import { SeatMeter } from "@/components/seat-meter";
-import { CAP_LINE, CONTINENTAL_LINE } from "@/lib/house";
+import { CONTINENTAL_LINE, capLine } from "@/lib/house";
 import { getMembershipSnapshot } from "@/lib/membership";
-import { descriptions, titles } from "@/lib/seo";
+import { descriptionsFor, titles } from "@/lib/seo";
 import { SHIPPING_SHORT } from "@/lib/us";
 
-export const metadata: Metadata = {
-  title: titles.request,
-  description: descriptions.request,
-  alternates: { canonical: "/request" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seats = await getMembershipSnapshot();
+  return {
+    title: titles.request,
+    description: descriptionsFor(seats.cap).request,
+    alternates: { canonical: "/request" },
+  };
+}
 
 export default async function RequestPage() {
   const seats = await getMembershipSnapshot();
@@ -29,7 +32,7 @@ export default async function RequestPage() {
             : "Tell us a little about why the post still matters. We keep the list intentionally short."}
         </p>
         <p className="mt-6 max-w-md text-sm leading-6 text-ink-soft">
-          {CAP_LINE} {CONTINENTAL_LINE} {SHIPPING_SHORT}
+          {capLine(seats.cap)} {CONTINENTAL_LINE} {SHIPPING_SHORT}
         </p>
         <div className="mt-8 max-w-sm">
           <SeatMeter seats={seats} />

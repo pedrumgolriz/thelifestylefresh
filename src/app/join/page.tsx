@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JoinForm } from "@/components/join-form";
-import { CAP_LINE } from "@/lib/house";
+import { capLine } from "@/lib/house";
 import { getMembershipSnapshot } from "@/lib/membership";
 import { descriptions, titles } from "@/lib/seo";
 
@@ -28,7 +28,7 @@ export default async function JoinPage({
           Your invitation is for you. Enter it and a continental U.S. address. Unused cards
           are taken back.
         </p>
-        <p className="mt-6 max-w-md text-sm leading-6 text-ink-soft">{CAP_LINE}</p>
+        <p className="mt-6 max-w-md text-sm leading-6 text-ink-soft">{capLine(seats.cap)}</p>
         {seats.atCapacity ? (
           <p className="mt-6 max-w-md text-sm text-lilac-deep">
             The table is full. A card cannot seat you until someone leaves. You may{" "}

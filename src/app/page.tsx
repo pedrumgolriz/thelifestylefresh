@@ -1,20 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Ornament } from "@/components/ornament";
 import { SeatMeter } from "@/components/seat-meter";
 import { prisma } from "@/lib/db";
 import {
-  CAP_LINE,
   CONTINENTAL_LINE,
   ENVELOPE_CATEGORIES,
   PRODUCT_SENTENCE,
+  capLine,
   invitationCta,
   shelfLabel,
 } from "@/lib/house";
 import { publishedJournalPosts } from "@/lib/journal-posts";
 import { getMembershipSnapshot } from "@/lib/membership";
+import { descriptionsFor, titles } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const seats = await getMembershipSnapshot();
+  return {
+    title: titles.home,
+    description: descriptionsFor(seats.cap).home,
+  };
+}
 
 const MONTHS = [
   "January",
@@ -104,7 +114,7 @@ export default async function HomePage() {
             </Link>
           </div>
           <p className="mt-7 max-w-md text-sm leading-6 text-ink-soft">
-            {CAP_LINE} {CONTINENTAL_LINE}
+            {capLine(seats.cap)} {CONTINENTAL_LINE}
           </p>
         </div>
         <figure className="invite-arrive product-frame">
@@ -119,13 +129,13 @@ export default async function HomePage() {
         </figure>
       </section>
 
-      {/* 250 names — the membership cap, stated plainly. */}
+      {/* The membership cap, stated plainly. */}
       <section className="mx-auto max-w-6xl px-5 pt-20" aria-labelledby="house-heading">
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-end">
           <div>
             <p className="script text-4xl sm:text-5xl">The house</p>
             <h2 id="house-heading" className="serif mt-4 max-w-2xl text-4xl sm:text-5xl">
-              {CAP_LINE}
+              {capLine(seats.cap)}
             </h2>
             <p className="mt-5 max-w-lg text-lg leading-8 text-ink">
               Membership is by invitation, and the list is short on purpose. When a place
@@ -241,7 +251,7 @@ export default async function HomePage() {
           There is a house. It sends an envelope.
         </h2>
         <p className="mt-5 text-lg leading-8 text-ink">
-          There are only 250 names. Perhaps yours might be one of them.
+          There are only {seats.cap} names. Perhaps yours might be one of them.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link href="/request" className="btn btn-ink">

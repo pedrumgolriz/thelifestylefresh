@@ -3,22 +3,24 @@ import Image from "next/image";
 import Link from "next/link";
 import { SeatMeter } from "@/components/seat-meter";
 import {
-  CAP_LINE,
   CONTINENTAL_LINE,
+  capLine,
   invitationCta,
 } from "@/lib/house";
 import { getMembershipSnapshot } from "@/lib/membership";
-import { descriptions, titles } from "@/lib/seo";
+import { descriptionsFor, titles } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: titles.house,
-  description: descriptions.house,
-  alternates: { canonical: "/house" },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const seats = await getMembershipSnapshot();
+  return {
+    title: titles.house,
+    description: descriptionsFor(seats.cap).house,
+    alternates: { canonical: "/house" },
+  };
+}
 
 const facts = [
   { label: "Established", value: "2019" },
-  { label: "The list", value: "250 names at a time" },
   { label: "Assembled", value: "By hand" },
   { label: "Posted from", value: "The United States" },
   { label: "Addressed", value: "Individually, to you" },
@@ -38,6 +40,10 @@ export default async function HousePage() {
       </p>
 
       <ul className="mt-12 divide-y divide-[var(--rule)] border-y border-[var(--rule)]">
+        <li className="flex items-baseline justify-between gap-6 py-4">
+          <span className="eyebrow">The list</span>
+          <span className="serif text-xl text-ink">{seats.cap} names at a time</span>
+        </li>
         {facts.map((fact) => (
           <li key={fact.label} className="flex items-baseline justify-between gap-6 py-4">
             <span className="eyebrow">{fact.label}</span>
@@ -47,7 +53,7 @@ export default async function HousePage() {
       </ul>
 
       <div className="mt-12">
-        <p className="serif-italic text-2xl text-ink">{CAP_LINE}</p>
+        <p className="serif-italic text-2xl text-ink">{capLine(seats.cap)}</p>
         <p className="mt-4 max-w-lg text-lg leading-8 text-ink">
           Membership is by invitation. We keep the list intentionally short so the envelope
           can stay honest. {CONTINENTAL_LINE}
