@@ -104,7 +104,7 @@ export default async function HomePage() {
           <Ornament className="ink-draw mt-5 max-w-xs" />
           <h1 className="serif mt-6 max-w-4xl text-5xl leading-[0.95] sm:text-7xl">
             <span className="block">A little luxury,</span>
-            <span className="serif-italic text-plum">delivered by post.</span>
+            <span className="serif-italic hero-gradient-text">delivered by post.</span>
           </h1>
           <p className="mt-6 max-w-md text-lg leading-8 text-ink">{PRODUCT_SENTENCE}</p>
           <div className="mt-8 flex flex-wrap items-center gap-4">

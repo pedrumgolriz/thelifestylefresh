@@ -429,6 +429,32 @@ a {
   animation-delay: -33s;
 }
 
+.hero-gradient-text {
+  background: linear-gradient(
+    100deg,
+    var(--plum) 0%,
+    var(--plum) 40%,
+    var(--lilac) 50%,
+    var(--plum) 60%,
+    var(--plum) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: hero-shimmer 20s ease-in-out infinite alternate;
+}
+
+@keyframes hero-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0% 0;
+  }
+}
+
 .envelope {
   position: relative;
   aspect-ratio: 5 / 3.4;
@@ -846,6 +872,7 @@ a {
   .cover-slate,
   .cover-teal,
   .cover-copper,
+  .hero-gradient-text,
   .ink-write,
   .ink-draw path,
   .ink-draw circle,
